@@ -1,697 +1,1912 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brand Guidelines | The Eye Centre</title>
-    
-    <!-- Google Fonts: Quicksand for the logo and headings, Inter for body copy -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Quicksand', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            teal: '#1c9985',
-                            mint: '#e0f4f1',
-                            dark: '#115e52',
-                            slate: '#f1f5f9',
-                            black: '#1e293b'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        /* Custom styles to handle logo variable overrides */
-        .logo-monochrome {
-            --logo-bg: #1e293b;
-            --logo-text: #1e293b;
-            --logo-fg: #ffffff;
-        }
-        .logo-inverted {
-            --logo-bg: #ffffff;
-            --logo-text: #ffffff;
-            --logo-fg: #1c9985;
-        }
-        .logo-mint {
-            --logo-bg: #e0f4f1;
-            --logo-text: #1c9985;
-            --logo-fg: #1c9985;
-        }
-        .do-not-stretch { transform: scaleX(1.3); }
-        .do-not-rotate { transform: rotate(-12deg); }
-        .do-not-recolour {
-            --logo-bg: #8b5cf6;
-            --logo-text: #e11d48;
-            --logo-fg: #fef08a;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Eye Centre — Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal:        #2aaa8a;
+    --teal-dark:   #1d8a6f;
+    --teal-mid:    #5dcaa5;
+    --teal-tint:   #e1f5ee;
+    --teal-deep:   #0f6e56;
+    --forest:      #1a2420;
+    --slate:       #4a5550;
+    --mist:        #ccd9d4;
+    --offwhite:    #f7f9f8;
+    --white:       #ffffff;
+    --border:      rgba(0,0,0,0.09);
+    --border-med:  rgba(0,0,0,0.15);
+    --font-head:   'DM Serif Display', serif;
+    --font-body:   'DM Sans', sans-serif;
+    --radius:      12px;
+    --radius-sm:   8px;
+    --radius-lg:   20px;
+
+    /* Bootstrap eyeglasses icon path — MIT License */
+    --glasses-path: "M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0";
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--offwhite);
+    color: var(--forest);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px; height: 100vh;
+    background: var(--white);
+    border-right: 0.5px solid var(--border);
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    text-decoration: none;
+  }
+
+  .sidebar-logo .mark {
+    width: 36px; height: 36px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sidebar-logo span {
+    font-family: var(--font-head);
+    font-size: 0.9rem;
+    color: var(--forest);
+    line-height: 1.2;
+  }
+
+  .nav-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .nav-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mist);
+    margin-bottom: 0.4rem;
+    padding-left: 0.5rem;
+  }
+
+  .nav-item {
+    display: block;
+    padding: 0.4rem 0.5rem;
+    font-size: 13px;
+    color: var(--slate);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s;
+  }
+
+  .nav-item:hover { background: var(--teal-tint); color: var(--teal-deep); }
+  .nav-item.active { background: var(--teal-tint); color: var(--teal); font-weight: 500; }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    margin-left: 220px;
+    padding: 0 3rem 6rem;
+    max-width: 1100px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--teal);
+    padding: 4rem 3rem;
+    margin: 0 -3rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .hero-icon {
+    width: 100px; height: 100px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .hero-text h1 {
+    font-family: var(--font-head);
+    font-size: 3rem;
+    color: white;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-text p {
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    margin-bottom: 4rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-title {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    color: var(--forest);
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .section-sub {
+    font-size: 13px;
+    color: var(--slate);
+    margin-bottom: 1.75rem;
+    margin-top: 0.4rem;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: visible;
+  }
+  .card-preview {
+    border-radius: var(--radius) var(--radius) 0 0;
+    overflow: hidden;
+  }
+
+  .card-preview {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-footer {
+    padding: 0.75rem 1rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .card-label { font-size: 12px; font-weight: 500; color: var(--slate); }
+  .card-sub   { font-size: 11px; color: var(--mist); margin-top: 1px; }
+
+  /* ── BUTTONS ── */
+  .btn {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 0.5px solid var(--border-med);
+    background: transparent;
+    color: var(--slate);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .btn:hover { background: var(--offwhite); color: var(--forest); }
+
+  .btn-primary {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+    font-size: 13px;
+    padding: 10px 22px;
+    border-radius: 40px;
+  }
+  .btn-primary:hover { background: var(--teal-dark); border-color: var(--teal-dark); }
+
+  .btn-outline {
+    border-color: var(--teal);
+    color: var(--teal);
+    font-size: 13px;
+    padding: 10px 22px;
+    border-radius: 40px;
+  }
+  .btn-outline:hover { background: var(--teal-tint); }
+
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  /* ── GRIDS ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+  /* ── LOGO INLINE ── */
+  .logo-inline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-inline .mark {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .logo-inline span {
+    font-family: var(--font-head);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  /* ── COLOUR ── */
+  .colour-swatch {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 0.5px solid var(--border);
+  }
+  .swatch-fill { height: 72px; }
+  .swatch-info { padding: 8px 10px; background: var(--white); }
+  .swatch-name { font-size: 12px; font-weight: 500; }
+  .swatch-hex  { font-size: 11px; color: var(--slate); font-family: monospace; margin-top: 2px; }
+  .swatch-rgb  { font-size: 10px; color: var(--mist); font-family: monospace; }
+
+  /* ── TYPE ── */
+  .type-block {
+    padding: 1.25rem 1.5rem;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+  }
+  .type-tag {
+    font-size: 10px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--mist); margin-bottom: 8px;
+  }
+
+  /* ── USAGE ── */
+  .usage-card {
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius-sm);
+    border: 0.5px solid var(--border);
+    background: var(--white);
+  }
+  .usage-card.do  { border-left: 3px solid var(--teal); }
+  .usage-card.dont { border-left: 3px solid #e24b4a; }
+  .usage-badge {
+    font-size: 10px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; padding: 2px 9px; border-radius: 20px;
+    display: inline-block; margin-bottom: 7px;
+  }
+  .bd { background: var(--teal-tint); color: var(--teal-deep); }
+  .bx { background: #fcebeb; color: #a32d2d; }
+  .usage-rule { font-size: 13px; color: var(--slate); line-height: 1.5; }
+
+  /* ── SOCIAL MEDIA ── */
+  .social-platform {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: visible;
+    margin-bottom: 2rem;
+  }
+  .social-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .social-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .social-header h3 { font-size: 15px; font-weight: 500; }
+  .social-header p  { font-size: 12px; color: var(--slate); margin-top: 1px; }
+  .social-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0; }
+  .social-format {
+    padding: 1.25rem;
+    border-right: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .social-format:last-child { border-right: none; }
+  .format-preview {
+    background: var(--offwhite);
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  .format-name  { font-size: 12px; font-weight: 500; color: var(--forest); }
+  .format-size  { font-size: 11px; color: var(--slate); margin-top: 2px; }
+  .format-ratio { font-size: 10px; color: var(--mist); font-family: monospace; }
+  .dl-wrap { position: relative; display: inline-block; margin-top: 8px; }
+  .dl-format {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 8px 4px 10px;
+    border-radius: 20px;
+    border: 0.5px solid var(--border-med);
+    background: transparent;
+    color: var(--slate);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.15s;
+    font-family: var(--font-body);
+    user-select: none;
+  }
+  .dl-format:hover { background: var(--teal-tint); color: var(--teal-deep); border-color: var(--teal-mid); }
+  .dl-format .caret { font-size: 9px; opacity: 0.6; }
+
+  /* All dropdown menus use fixed positioning via JS — never clip */
+  .dl-menu,
+  .logo-dl-menu {
+    display: none;
+    position: fixed;
+    background: var(--white);
+    border: 0.5px solid var(--border-med);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+    min-width: 210px;
+    z-index: 9999;
+    overflow: hidden;
+  }
+  .dl-menu.open,
+  .logo-dl-menu.open { display: block; }
+
+  .dl-menu-header {
+    padding: 6px 12px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mist);
+    border-bottom: 0.5px solid var(--border);
+    font-family: var(--font-body);
+  }
+  .dl-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 9px 14px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--forest);
+    cursor: pointer;
+    transition: background 0.1s;
+    border: none;
+    background: none;
+    width: 100%;
+    font-family: var(--font-body);
+    text-align: left;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .dl-menu-item:last-child { border-bottom: none; }
+  .dl-menu-item:hover { background: var(--teal-tint); color: var(--teal-deep); }
+  .dl-menu-item .fmt-badge {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+  .fmt-svg  { background: #eef2ff; color: #4f46e5; }
+  .fmt-png  { background: #f0fdf4; color: #16a34a; }
+  .fmt-jpg  { background: #fff7ed; color: #ea580c; }
+  .fmt-webp { background: #fdf4ff; color: #9333ea; }
+
+  /* logo card download dropdown wrapper */
+  .logo-dl-wrap { position: relative; display: inline-block; }
+
+  /* ── PALETTE SWATCH LARGE ── */
+  .palette-row {
+    display: flex;
+    gap: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 0.5px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  .palette-cell {
+    flex: 1;
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+    padding: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    font-family: monospace;
+  }
+
+  /* ── MOCKUP PHONE FRAME ── */
+  .phone-frame {
+    width: 120px; height: 200px;
+    border: 3px solid var(--forest);
+    border-radius: 18px;
+    background: var(--white);
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* ── DOWNLOAD PACK ── */
+  .pack-card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .pack-icon {
+    width: 48px; height: 48px;
+    background: var(--teal-tint);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 22px;
+  }
+  .pack-info h4 { font-size: 14px; font-weight: 500; }
+  .pack-info p  { font-size: 12px; color: var(--slate); margin-top: 2px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; padding: 0 1.5rem 4rem; }
+    .hero { margin: 0 -1.5rem 2rem; padding: 2.5rem 1.5rem; }
+    .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  /* ── HELPERS ── */
+  .tag {
+    display: inline-block;
+    font-size: 10px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; padding: 3px 9px;
+    border-radius: 20px;
+    background: var(--teal-tint);
+    color: var(--teal-deep);
+    margin-right: 4px;
+  }
+  .divider { height: 0.5px; background: var(--border); margin: 2rem 0; }
+  .note { font-size: 12px; color: var(--slate); font-style: italic; margin-top: 0.5rem; }
+
+  /* glasses SVG helper */
+  .glasses { display: block; }
+
+  /* ── PASSWORD SCREEN ── */
+  #lock-screen {
+    position: fixed;
+    inset: 0;
+    background: var(--forest);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #lock-screen.unlocked {
+    animation: fadeOut 0.4s ease forwards;
+    pointer-events: none;
+  }
+  @keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+  }
+
+  .lock-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2.5rem 2.5rem 2rem;
+    width: 360px;
+    max-width: calc(100vw - 2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .lock-logo {
+    width: 72px; height: 72px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .lock-title {
+    font-family: var(--font-head);
+    font-size: 1.4rem;
+    color: var(--forest);
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .lock-sub {
+    font-size: 13px;
+    color: var(--slate);
+    text-align: center;
+    margin-top: -0.75rem;
+  }
+
+  .lock-input-wrap {
+    width: 100%;
+    position: relative;
+  }
+
+  .lock-input {
+    width: 100%;
+    padding: 12px 44px 12px 16px;
+    border: 1.5px solid var(--border-med);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: var(--font-body);
+    color: var(--forest);
+    background: var(--offwhite);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    letter-spacing: 0.05em;
+  }
+  .lock-input:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(42,170,138,0.15);
+    background: var(--white);
+  }
+  .lock-input.error {
+    border-color: #e24b4a;
+    box-shadow: 0 0 0 3px rgba(226,75,74,0.12);
+    animation: shake 0.35s ease;
+  }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+  }
+
+  .lock-toggle {
+    position: absolute;
+    right: 12px; top: 50%;
+    transform: translateY(-50%);
+    background: none; border: none;
+    cursor: pointer;
+    color: var(--mist);
+    padding: 4px;
+    display: flex; align-items: center; justify-content: center;
+    transition: color 0.15s;
+  }
+  .lock-toggle:hover { color: var(--slate); }
+
+  .lock-btn {
+    width: 100%;
+    padding: 13px;
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    letter-spacing: 0.01em;
+  }
+  .lock-btn:hover { background: var(--teal-dark); }
+  .lock-btn:active { transform: scale(0.98); }
+
+  .lock-error {
+    font-size: 12px;
+    color: #e24b4a;
+    text-align: center;
+    min-height: 16px;
+    margin-top: -0.5rem;
+    font-weight: 500;
+  }
+
+  .lock-footer {
+    font-size: 11px;
+    color: var(--mist);
+    text-align: center;
+    margin-top: -0.5rem;
+  }
+</style>
 </head>
-<body class="bg-slate-50 text-brand-black">
+<body>
 
-    <!-- Simple Client-Side Password Protection -->
-    <script>
-        const expectedPassword = "James786!!!";
-        const userPassword = prompt("Please enter the password to view the brand guidelines:");
-        
-        if (userPassword !== expectedPassword) {
-            // Replace the entire body content with an Access Denied message
-            document.body.innerHTML = `
-                <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #f8fafc; font-family: 'Inter', sans-serif;">
-                    <div style="text-align: center; padding: 2.5rem; background: white; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border: 1px solid #f1f5f9; max-width: 400px; width: 90%;">
-                        <h1 style="font-size: 1.5rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; font-family: 'Quicksand', sans-serif;">Access Denied</h1>
-                        <p style="color: #64748b; margin-bottom: 1.5rem; line-height: 1.5;">You have entered an incorrect password. Unauthorised access is not permitted.</p>
-                        <button onclick="location.reload()" style="background-color: #1c9985; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 500; cursor: pointer; transition: background-color 0.2s; width: 100%;">Try Again</button>
-                    </div>
-                </div>
-            `;
-            // Stop further rendering of the page
-            window.stop();
-        }
-    </script>
+<!-- PASSWORD LOCK SCREEN -->
+<div id="lock-screen">
+  <div class="lock-card">
+    <div class="lock-logo">
+      <svg width="54" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/>
+      </svg>
+    </div>
+    <div class="lock-title">the eye centre<br>Brand Guidelines</div>
+    <div class="lock-sub">Enter your password to access this document.</div>
+    <div class="lock-input-wrap">
+      <input
+        class="lock-input"
+        id="lock-input"
+        type="password"
+        placeholder="Password"
+        autocomplete="current-password"
+        onkeydown="if(event.key==='Enter')unlock()"
+      />
+      <button class="lock-toggle" id="lock-toggle" onclick="togglePwVisible()" aria-label="Show password">
+        <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+    </div>
+    <div class="lock-error" id="lock-error"></div>
+    <button class="lock-btn" onclick="unlock()">Unlock</button>
+    <div class="lock-footer">The Eye Centre · Confidential</div>
+  </div>
+</div>
 
-    <!-- SVG Definitions (Hidden) -->
-    <svg style="display: none;">
-        <!-- Logo Mark (Circle & Glasses) -->
-        <symbol id="logo-mark" viewBox="0 0 80 80">
-            <circle cx="40" cy="40" r="40" fill="var(--logo-bg, #1c9985)"/>
-            <g stroke="var(--logo-fg, #ffffff)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Left Frame -->
-                <path d="M 16 36 C 22 34, 27 34, 36 37 L 36 45 C 34 52, 24 53, 18 48 C 15 46, 15 42, 16 36 Z" />
-                <!-- Right Frame -->
-                <path d="M 64 36 C 58 34, 53 34, 44 37 L 44 45 C 46 52, 56 53, 62 48 C 65 46, 65 42, 64 36 Z" />
-                <!-- Bridge -->
-                <path d="M 36 40 Q 40 38 44 40" />
-                <!-- Arms -->
-                <path d="M 16 38 L 10 38 M 64 38 L 70 38" />
-            </g>
-        </symbol>
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <a class="sidebar-logo" href="#top">
+    <div class="mark">
+      <svg width="30" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/>
+      </svg>
+    </div>
+    <span>the eye centre</span>
+  </a>
 
-        <!-- Logotype (Horizontal) - Expanded Width to prevent cut-off -->
-        <symbol id="logotype" viewBox="0 0 360 80">
-            <text x="0" y="55" font-family="'Quicksand', sans-serif" font-weight="600" font-size="46px" letter-spacing="-0.5px" fill="var(--logo-text, #1c9985)">the eye centre</text>
-        </symbol>
+  <div class="nav-section">
+    <div class="nav-label">Brand Identity</div>
+    <a class="nav-item" href="#logo">Logo</a>
+    <a class="nav-item" href="#colours">Colours</a>
+    <a class="nav-item" href="#typography">Typography</a>
+    <a class="nav-item" href="#usage">Usage Rules</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Social Media</div>
+    <a class="nav-item" href="#instagram">Instagram</a>
+    <a class="nav-item" href="#facebook">Facebook</a>
+    <a class="nav-item" href="#twitter">X / Twitter</a>
+    <a class="nav-item" href="#linkedin">LinkedIn</a>
+    <a class="nav-item" href="#youtube">YouTube</a>
+    <a class="nav-item" href="#tiktok">TikTok</a>
+    <a class="nav-item" href="#whatsapp">WhatsApp</a>
+    <a class="nav-item" href="#google">Google Business</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Downloads</div>
+    <a class="nav-item" href="#downloads">All Assets</a>
+  </div>
+</nav>
 
-        <!-- Logotype (Stacked) - Expanded Width -->
-        <symbol id="logotype-stacked" viewBox="0 0 200 80">
-            <text x="50%" y="30" text-anchor="middle" font-family="'Quicksand', sans-serif" font-weight="600" font-size="28px" letter-spacing="-0.5px" fill="var(--logo-text, #1c9985)">the eye</text>
-            <text x="50%" y="60" text-anchor="middle" font-family="'Quicksand', sans-serif" font-weight="600" font-size="28px" letter-spacing="-0.5px" fill="var(--logo-text, #1c9985)">centre</text>
-        </symbol>
-    </svg>
+<!-- MAIN -->
+<main class="main" id="top">
 
-    <!-- Navigation -->
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <svg viewBox="0 0 80 80" class="h-8 w-8">
-                    <use href="#logo-mark" x="0" y="0" width="80" height="80" />
-                </svg>
-                <span class="font-display font-bold text-brand-dark text-lg">Brand Guidelines</span>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-icon">
+      <svg width="88" height="40" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/>
+      </svg>
+    </div>
+    <div class="hero-text">
+      <h1>Brand Guidelines</h1>
+      <p>The Eye Centre · Visual Identity System · 2025</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       LOGO
+  ══════════════════════════════════════════ -->
+  <section class="section" id="logo">
+    <h2 class="section-title">Logo</h2>
+    <p class="section-sub">The primary logo consists of the spectacles mark inside a teal circle, paired with the wordmark in DM Serif Display.</p>
+
+    <div class="grid-2" style="margin-bottom:12px;">
+
+      <!-- Primary Light -->
+      <div class="card">
+        <div class="card-preview" style="background:#ffffff;">
+          <div class="logo-inline">
+            <div class="mark" style="width:64px;height:64px;background:#2aaa8a;">
+              <svg width="54" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
             </div>
-            <div class="text-sm font-medium text-gray-500">v1.2 &bull; 2026</div>
+            <span style="font-size:1.4rem;color:#1a2420;">the eye centre</span>
+          </div>
         </div>
-    </nav>
-
-    <main class="max-w-6xl mx-auto px-6 py-12 space-y-20">
-
-        <!-- Header -->
-        <header class="max-w-3xl">
-            <h1 class="text-4xl md:text-5xl font-display font-bold text-brand-black mb-4">Our Visual Identity</h1>
-            <p class="text-lg text-gray-600 leading-relaxed">
-                Welcome to the official brand guidelines for <strong>the eye centre</strong>. This manual outlines the core elements of our visual identity, ensuring consistency, clarity, and recognition across all our communications. By adhering to these rules, we maintain a cohesive and professional brand presence.
-            </p>
-        </header>
-
-        <!-- Section: Logo Configurations -->
-        <section>
-            <h2 class="text-2xl font-display font-bold text-brand-black border-b border-gray-200 pb-3 mb-8">1. Logo Configurations</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Primary Logo -->
-                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center min-h-[300px]">
-                    <svg viewBox="0 0 455 80" class="h-16 w-auto mb-8">
-                        <use href="#logo-mark" x="0" y="0" width="80" height="80" />
-                        <use href="#logotype" x="95" y="0" width="360" height="80" />
-                    </svg>
-                    <div class="text-center">
-                        <h3 class="font-semibold text-gray-800 mb-1">Primary Horizontal Logo</h3>
-                        <p class="text-sm text-gray-500">Our primary lockup. Use this version in most standard applications, such as website headers and letterheads.</p>
-                    </div>
-                </div>
-
-                <!-- Secondary / Stacked Logo -->
-                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center min-h-[300px]">
-                    <svg viewBox="0 0 200 180" class="h-32 w-auto mb-8">
-                        <use href="#logo-mark" x="60" y="0" width="80" height="80" />
-                        <use href="#logotype-stacked" x="0" y="95" width="200" height="80" />
-                    </svg>
-                    <div class="text-center">
-                        <h3 class="font-semibold text-gray-800 mb-1">Stacked Logo</h3>
-                        <p class="text-sm text-gray-500">For vertical layouts, profile pictures, and situations where horizontal space is restricted.</p>
-                    </div>
-                </div>
-
-                <!-- Logo Mark -->
-                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center">
-                    <svg viewBox="0 0 80 80" class="h-20 w-20 mb-8">
-                        <use href="#logo-mark" x="0" y="0" width="80" height="80" />
-                    </svg>
-                    <div class="text-center">
-                        <h3 class="font-semibold text-gray-800 mb-1">The Logomark</h3>
-                        <p class="text-sm text-gray-500">Use independently only when the brand is already established in the context, or as a favicon.</p>
-                    </div>
-                </div>
-
-                <!-- Monochrome & Inverted -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center overflow-hidden">
-                        <svg viewBox="0 0 455 80" class="h-8 w-auto mb-4 logo-monochrome max-w-full">
-                            <use href="#logo-mark" x="0" y="0" width="80" height="80" />
-                            <use href="#logotype" x="95" y="0" width="360" height="80" />
-                        </svg>
-                        <h3 class="font-semibold text-gray-800 text-sm text-center">Monochrome</h3>
-                    </div>
-                    <div class="bg-brand-dark p-6 rounded-2xl border border-transparent shadow-sm flex flex-col items-center justify-center overflow-hidden">
-                        <svg viewBox="0 0 455 80" class="h-8 w-auto mb-4 logo-inverted max-w-full">
-                            <use href="#logo-mark" x="0" y="0" width="80" height="80" />
-                            <use href="#logotype" x="95" y="0" width="360" height="80" />
-                        </svg>
-                        <h3 class="font-semibold text-white text-sm text-center">Inverted</h3>
-                    </div>
-                </div>
+        <div class="card-footer">
+          <div><div class="card-label">Primary — Light</div><div class="card-sub">Default usage on white/light backgrounds</div></div>
+          <div class="logo-dl-wrap">
+            <button class="btn" onclick="toggleLogoMenu('menu-pl')">↓ Export ▾</button>
+            <div class="logo-dl-menu" id="menu-pl">
+              <div class="dl-menu-header">Format</div>
+              <button class="dl-menu-item" onclick="exportLogo('primary-light','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('primary-light','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('primary-light','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('primary-light','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button>
             </div>
-        </section>
-
-        <!-- Section: Colour Palette -->
-        <section>
-            <h2 class="text-2xl font-display font-bold text-brand-black border-b border-gray-200 pb-3 mb-8">2. Colour Palette</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Vision Teal -->
-                <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white">
-                    <div class="h-32 bg-brand-teal"></div>
-                    <div class="p-5">
-                        <h3 class="font-bold text-gray-900 mb-2">Vision Teal</h3>
-                        <p class="text-xs text-gray-500 mb-3">Primary brand colour. Used for the logomark and primary typography.</p>
-                        <div class="space-y-1 text-sm font-mono text-gray-600">
-                            <p><span class="font-semibold">HEX</span> #1c9985</p>
-                            <p><span class="font-semibold">RGB</span> 28, 153, 133</p>
-                            <p><span class="font-semibold">CMYK</span> 82, 0, 48, 40</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Clear Mint -->
-                <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white">
-                    <div class="h-32 bg-brand-mint border-b border-gray-100"></div>
-                    <div class="p-5">
-                        <h3 class="font-bold text-gray-900 mb-2">Clear Mint</h3>
-                        <p class="text-xs text-gray-500 mb-3">Secondary tint. Provides a soft, clinical, yet friendly background tone.</p>
-                        <div class="space-y-1 text-sm font-mono text-gray-600">
-                            <p><span class="font-semibold">HEX</span> #e0f4f1</p>
-                            <p><span class="font-semibold">RGB</span> 224, 244, 241</p>
-                            <p><span class="font-semibold">CMYK</span> 8, 0, 1, 4</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Deep Focus -->
-                <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white">
-                    <div class="h-32 bg-brand-dark"></div>
-                    <div class="p-5">
-                        <h3 class="font-bold text-gray-900 mb-2">Deep Focus</h3>
-                        <p class="text-xs text-gray-500 mb-3">Dark contrast colour. Excellent for high-contrast backgrounds and text.</p>
-                        <div class="space-y-1 text-sm font-mono text-gray-600">
-                            <p><span class="font-semibold">HEX</span> #115e52</p>
-                            <p><span class="font-semibold">RGB</span> 17, 94, 82</p>
-                            <p><span class="font-semibold">CMYK</span> 85, 30, 60, 60</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Optic White -->
-                <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-white">
-                    <div class="h-32 bg-white border-b border-gray-100"></div>
-                    <div class="p-5">
-                        <h3 class="font-bold text-gray-900 mb-2">Optic White</h3>
-                        <p class="text-xs text-gray-500 mb-3">Used for negative space, the glasses icon, and background elements.</p>
-                        <div class="space-y-1 text-sm font-mono text-gray-600">
-                            <p><span class="font-semibold">HEX</span> #ffffff</p>
-                            <p><span class="font-semibold">RGB</span> 255, 255, 255</p>
-                            <p><span class="font-semibold">CMYK</span> 0, 0, 0, 0</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Typography -->
-        <section>
-            <h2 class="text-2xl font-display font-bold text-brand-black border-b border-gray-200 pb-3 mb-8">3. Typography</h2>
-            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Primary Brand Typeface</h3>
-                    <div class="font-display text-6xl text-brand-teal font-semibold mb-4">Quicksand</div>
-                    <p class="text-gray-600 mb-6">Quicksand is a geometric sans-serif with rounded terminals. It mirrors the circular and friendly nature of our logomark. We use it for our logotype, all primary headings, and promotional call-outs.</p>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <span class="block text-xs text-gray-400 mb-1">Semi-Bold (Used in Logo)</span>
-                            <div class="font-display font-semibold text-2xl text-gray-800">Aa Bb Cc Dd Ee Ff Gg Hh</div>
-                        </div>
-                        <div>
-                            <span class="block text-xs text-gray-400 mb-1">Regular</span>
-                            <div class="font-display font-medium text-2xl text-gray-800">Aa Bb Cc Dd Ee Ff Gg Hh</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="md:border-l md:border-gray-100 md:pl-12">
-                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Supporting Typeface</h3>
-                    <div class="font-sans text-6xl text-brand-dark font-medium mb-4">Inter</div>
-                    <p class="text-gray-600 mb-6">Inter is highly legible and designed for screen readability. We use it for body copy, long-form text, and small functional elements across our digital platforms.</p>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <span class="block text-xs text-gray-400 mb-1">Medium</span>
-                            <div class="font-sans font-medium text-2xl text-gray-800">1 2 3 4 5 6 7 8 9 0</div>
-                        </div>
-                        <div>
-                            <span class="block text-xs text-gray-400 mb-1">Regular</span>
-                            <div class="font-sans font-normal text-2xl text-gray-800">The quick brown fox jumps over the lazy dog.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Usage Rules -->
-        <section>
-            <h2 class="text-2xl font-display font-bold text-brand-black border-b border-gray-200 pb-3 mb-8">4. Usage & Clear Space</h2>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                <!-- Clear Space -->
-                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
-                    <h3 class="font-semibold text-gray-800 mb-4">Clear Space Minimum</h3>
-                    <p class="text-sm text-gray-600 mb-8">To ensure the logo remains clear and legible, always maintain a minimum clear space around it. This space is defined by "x", which is equal to half the height of the circular logomark.</p>
-                    
-                    <div class="flex justify-center items-center h-48 bg-gray-50 rounded-lg">
-                        <div class="relative inline-block border border-dashed border-teal-400 bg-teal-50/50" style="padding: 2.5rem;">
-                            <!-- Indicator Lines -->
-                            <div class="absolute top-0 left-0 w-full h-[2.5rem] border-b border-teal-200 flex items-center justify-center">
-                                <span class="text-xs font-mono text-teal-600">x</span>
-                            </div>
-                            <div class="absolute top-0 left-0 w-[2.5rem] h-full border-r border-teal-200 flex items-center justify-center">
-                                <span class="text-xs font-mono text-teal-600">x</span>
-                            </div>
-
-                            <svg viewBox="0 0 455 80" class="h-12 w-auto relative z-10">
-                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
-                                <use href="#logotype" x="95" y="0" width="360" height="80" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Minimum Size -->
-                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
-                    <h3 class="font-semibold text-gray-800 mb-4">Minimum Size</h3>
-                    <p class="text-sm text-gray-600 mb-8">To maintain legibility, never reproduce the logo smaller than the dimensions specified below across print and digital mediums.</p>
-                    
-                    <div class="flex flex-col justify-center items-center h-48 space-y-8 bg-gray-50 rounded-lg">
-                        <div class="flex items-center space-x-6">
-                            <svg viewBox="0 0 455 80" class="h-5 w-auto">
-                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
-                                <use href="#logotype" x="95" y="0" width="360" height="80" />
-                            </svg>
-                            <span class="text-sm font-mono text-gray-500 border-l border-gray-300 pl-4">Digital: 120px wide<br>Print: 30mm wide</span>
-                        </div>
-                        <div class="flex items-center space-x-6">
-                            <svg viewBox="0 0 80 80" class="h-6 w-6">
-                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
-                            </svg>
-                            <span class="text-sm font-mono text-gray-500 border-l border-gray-300 pl-4">Digital: 24px wide<br>Print: 8mm wide</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Dos and Don'ts -->
-            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
-                <h3 class="font-semibold text-gray-800 mb-6">Incorrect Usage</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    
-                    <div class="text-center">
-                        <div class="bg-red-50 h-40 rounded-xl flex items-center justify-center mb-4 overflow-hidden border border-red-100">
-                            <svg viewBox="0 0 455 80" class="h-10 w-auto do-not-stretch transition-transform">
-                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
-                                <use href="#logotype" x="95" y="0" width="360" height="80" />
-                            </svg>
-                        </div>
-                        <p class="text-sm font-bold text-red-600 mb-1">Don't</p>
-                        <p class="text-xs text-gray-600">Do not stretch, squash or distort the logo proportions.</p>
-                    </div>
-
-                    <div class="text-center">
-                        <div class="bg-red-50 h-40 rounded-xl flex items-center justify-center mb-4 overflow-hidden border border-red-100">
-                            <svg viewBox="0 0 455 80" class="h-10 w-auto do-not-rotate transition-transform">
-                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
-                                <use href="#logotype" x="95" y="0" width="360" height="80" />
-                            </svg>
-                        </div>
-                        <p class="text-sm font-bold text-red-600 mb-1">Don't</p>
-                        <p class="text-xs text-gray-600">Do not rotate the logo to any arbitrary angle.</p>
-                    </div>
-
-                    <div class="text-center">
-                        <div class="bg-red-50 h-40 rounded-xl flex items-center justify-center mb-4 overflow-hidden border border-red-100">
-                            <svg viewBox="0 0 455 80" class="h-10 w-auto do-not-recolour transition-colors">
-                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
-                                <use href="#logotype" x="95" y="0" width="360" height="80" />
-                            </svg>
-                        </div>
-                        <p class="text-sm font-bold text-red-600 mb-1">Don't</p>
-                        <p class="text-xs text-gray-600">Do not use unapproved colour combinations.</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Asset Downloads - EXPANDED -->
-        <section>
-            <h2 class="text-2xl font-display font-bold text-brand-black border-b border-gray-200 pb-3 mb-2">5. Asset Downloads</h2>
-            <p class="text-gray-600 mb-8">Download high-quality, perfectly scaled SVG assets for all platforms and mediums. SVGs are infinitely scalable vector files ideal for both digital and print production.</p>
-
-            <!-- 5.1 Core Logos -->
-            <h3 class="text-lg font-bold text-brand-dark mb-4 uppercase tracking-wide">Core Logos</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <!-- Primary Vector -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-full flex items-center justify-center mb-4 bg-gray-50 rounded-xl px-2">
-                        <svg viewBox="0 0 455 80" class="h-6 w-auto"><use href="#logo-mark" x="0" y="0" width="80" height="80" /><use href="#logotype" x="95" y="0" width="360" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">Primary Logo</h3>
-                    <p class="text-xs text-gray-500 mb-6">Standard horizontal SVG</p>
-                    <button onclick="downloadAsset('core-primary')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- Stacked Vector -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-full flex items-center justify-center mb-4 bg-gray-50 rounded-xl px-2">
-                        <svg viewBox="0 0 200 180" class="h-12 w-auto"><use href="#logo-mark" x="60" y="0" width="80" height="80" /><use href="#logotype-stacked" x="0" y="95" width="200" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">Stacked Logo</h3>
-                    <p class="text-xs text-gray-500 mb-6">Vertical orientation SVG</p>
-                    <button onclick="downloadAsset('core-stacked')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- Monochrome -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-full flex items-center justify-center mb-4 bg-gray-50 rounded-xl px-2">
-                        <svg viewBox="0 0 455 80" class="h-6 w-auto logo-monochrome"><use href="#logo-mark" x="0" y="0" width="80" height="80" /><use href="#logotype" x="95" y="0" width="360" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">Monochrome</h3>
-                    <p class="text-xs text-gray-500 mb-6">Dark/Greyscale applications</p>
-                    <button onclick="downloadAsset('core-monochrome')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- Inverted -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-full flex items-center justify-center mb-4 bg-brand-dark rounded-xl px-2">
-                        <svg viewBox="0 0 455 80" class="h-6 w-auto logo-inverted"><use href="#logo-mark" x="0" y="0" width="80" height="80" /><use href="#logotype" x="95" y="0" width="360" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">Inverted Logo</h3>
-                    <p class="text-xs text-gray-500 mb-6">For dark backgrounds</p>
-                    <button onclick="downloadAsset('core-inverted')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-            </div>
-
-            <!-- 5.2 Social Media Profiles -->
-            <h3 class="text-lg font-bold text-brand-dark mb-4 uppercase tracking-wide">Social Media Profiles (1:1 Ratio)</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <!-- Instagram -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-20 flex items-center justify-center mb-4 bg-brand-mint rounded-full">
-                        <svg viewBox="0 0 80 80" class="h-8 w-8"><use href="#logo-mark" x="0" y="0" width="80" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">Instagram</h3>
-                    <p class="text-xs text-gray-500 mb-6">1080x1080px (Mint BG)</p>
-                    <button onclick="downloadAsset('social-ig-profile')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- Facebook -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-20 flex items-center justify-center mb-4 bg-slate-100 rounded-full">
-                        <svg viewBox="0 0 80 80" class="h-8 w-8"><use href="#logo-mark" x="0" y="0" width="80" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">Facebook</h3>
-                    <p class="text-xs text-gray-500 mb-6">1080x1080px (Slate BG)</p>
-                    <button onclick="downloadAsset('social-fb-profile')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- X (Twitter) -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-20 flex items-center justify-center mb-4 bg-white border border-gray-200 rounded-full">
-                        <svg viewBox="0 0 80 80" class="h-8 w-8"><use href="#logo-mark" x="0" y="0" width="80" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">X (Twitter)</h3>
-                    <p class="text-xs text-gray-500 mb-6">400x400px (White BG)</p>
-                    <button onclick="downloadAsset('social-x-profile')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- LinkedIn Profile -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-20 flex items-center justify-center mb-4 bg-brand-dark rounded-full">
-                        <svg viewBox="0 0 80 80" class="h-8 w-8 logo-inverted"><use href="#logo-mark" x="0" y="0" width="80" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">LinkedIn Profile</h3>
-                    <p class="text-xs text-gray-500 mb-6">400x400px (Inverted)</p>
-                    <button onclick="downloadAsset('social-li-profile')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-            </div>
-
-            <!-- 5.3 Social Media Banners -->
-            <h3 class="text-lg font-bold text-brand-dark mb-4 uppercase tracking-wide">Banners &amp; Covers</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <!-- Facebook Cover -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-full flex items-center justify-center mb-4 bg-slate-100 rounded-xl relative overflow-hidden">
-                        <svg viewBox="0 0 455 80" class="h-4 w-auto z-10 relative"><use href="#logo-mark" x="0" y="0" width="80" height="80" /><use href="#logotype" x="95" y="0" width="360" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">Facebook Cover</h3>
-                    <p class="text-xs text-gray-500 mb-6">820x312px</p>
-                    <button onclick="downloadAsset('banner-fb')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- LinkedIn Banner -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-full flex items-center justify-center mb-4 bg-brand-dark rounded-xl relative overflow-hidden">
-                        <svg viewBox="0 0 455 80" class="h-4 w-auto z-10 relative logo-inverted"><use href="#logo-mark" x="0" y="0" width="80" height="80" /><use href="#logotype" x="95" y="0" width="360" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">LinkedIn Banner</h3>
-                    <p class="text-xs text-gray-500 mb-6">1584x396px</p>
-                    <button onclick="downloadAsset('banner-li')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- X (Twitter) Header -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-full flex items-center justify-center mb-4 bg-brand-mint rounded-xl relative overflow-hidden">
-                        <svg viewBox="0 0 455 80" class="h-4 w-auto z-10 relative"><use href="#logo-mark" x="0" y="0" width="80" height="80" /><use href="#logotype" x="95" y="0" width="360" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">X (Twitter) Header</h3>
-                    <p class="text-xs text-gray-500 mb-6">1500x500px</p>
-                    <button onclick="downloadAsset('banner-x')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- YouTube Art -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-full flex items-center justify-center mb-4 bg-slate-900 rounded-xl relative overflow-hidden">
-                        <svg viewBox="0 0 455 80" class="h-3 w-auto z-10 relative logo-inverted"><use href="#logo-mark" x="0" y="0" width="80" height="80" /><use href="#logotype" x="95" y="0" width="360" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">YouTube Channel</h3>
-                    <p class="text-xs text-gray-500 mb-6">2560x1440px</p>
-                    <button onclick="downloadAsset('banner-yt')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-            </div>
-
-            <!-- 5.4 Digital & Layouts -->
-            <h3 class="text-lg font-bold text-brand-dark mb-4 uppercase tracking-wide">Digital, Web &amp; Print Layouts</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Open Graph Image -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-full flex items-center justify-center mb-4 bg-white border border-gray-100 rounded-xl relative overflow-hidden">
-                        <svg viewBox="0 0 455 80" class="h-6 w-auto z-10 relative"><use href="#logo-mark" x="0" y="0" width="80" height="80" /><use href="#logotype" x="95" y="0" width="360" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">Web Share Image</h3>
-                    <p class="text-xs text-gray-500 mb-6">Open Graph (1200x630px)</p>
-                    <button onclick="downloadAsset('layout-og')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- Favicon -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-20 flex items-center justify-center mb-4 border border-dashed border-gray-300 rounded-lg">
-                        <svg viewBox="0 0 80 80" class="h-8 w-8"><use href="#logo-mark" x="0" y="0" width="80" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">Web Favicon</h3>
-                    <p class="text-xs text-gray-500 mb-6">Square Transparent (512x512)</p>
-                    <button onclick="downloadAsset('layout-favicon')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- Story Background -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-12 flex items-center justify-center mb-4 bg-brand-mint rounded-md">
-                        <svg viewBox="0 0 200 180" class="h-8 w-auto"><use href="#logo-mark" x="60" y="0" width="80" height="80" /><use href="#logotype-stacked" x="0" y="95" width="200" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">IG/FB Story BG</h3>
-                    <p class="text-xs text-gray-500 mb-6">Vertical Format (1080x1920)</p>
-                    <button onclick="downloadAsset('layout-story')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-                <!-- Presentation 16:9 -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
-                    <div class="h-20 w-full flex items-center justify-center mb-4 bg-white border border-gray-200 shadow-inner rounded-md">
-                        <svg viewBox="0 0 455 80" class="h-5 w-auto"><use href="#logo-mark" x="0" y="0" width="80" height="80" /><use href="#logotype" x="95" y="0" width="360" height="80" /></svg>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-1">Presentation Slide</h3>
-                    <p class="text-xs text-gray-500 mb-6">Title Slide (1920x1080px)</p>
-                    <button onclick="downloadAsset('layout-presentation')" class="mt-auto w-full bg-brand-teal text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-dark transition-colors">Download SVG</button>
-                </div>
-            </div>
-
-        </section>
-
-    </main>
-
-    <footer class="border-t border-gray-200 bg-white mt-12 py-8">
-        <div class="max-w-6xl mx-auto px-6 text-center text-sm text-gray-400">
-            &copy; 2026 The Eye Centre. Internal Brand Guidelines.
+          </div>
         </div>
-    </footer>
+      </div>
 
-    <!-- Asset Generation Script -->
-    <script>
-        function downloadAsset(type) {
-            let svgContent = '';
-            let filename = '';
-            
-            // Ensures the downloaded SVGs load the required font independently
-            const styleDef = `<style>@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&amp;display=swap');</style>`;
-            
-            // Reusable SVG string builders with configurable colours
-            const getMark = (cx, cy, scale, fill="#1c9985", stroke="#ffffff") => `
-                <g transform="translate(${cx}, ${cy}) scale(${scale})">
-                    <circle cx="40" cy="40" r="40" fill="${fill}"/>
-                    <g stroke="${stroke}" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M 16 36 C 22 34, 27 34, 36 37 L 36 45 C 34 52, 24 53, 18 48 C 15 46, 15 42, 16 36 Z" />
-                        <path d="M 64 36 C 58 34, 53 34, 44 37 L 44 45 C 46 52, 56 53, 62 48 C 65 46, 65 42, 64 36 Z" />
-                        <path d="M 36 40 Q 40 38 44 40" />
-                        <path d="M 16 38 L 10 38 M 64 38 L 70 38" />
-                    </g>
-                </g>`;
-                
-            const getLogotype = (cx, cy, scale, fill="#1c9985") => `
-                <g transform="translate(${cx}, ${cy}) scale(${scale})">
-                    <text x="0" y="55" font-family="'Quicksand', sans-serif" font-weight="600" font-size="46px" letter-spacing="-0.5px" fill="${fill}">the eye centre</text>
-                </g>`;
+      <!-- Primary Dark -->
+      <div class="card">
+        <div class="card-preview" style="background:#1a2420;">
+          <div class="logo-inline">
+            <div class="mark" style="width:64px;height:64px;background:#2aaa8a;">
+              <svg width="54" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+            <span style="font-size:1.4rem;color:white;">the eye centre</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div><div class="card-label">Primary — Dark</div><div class="card-sub">Usage on dark/forest backgrounds</div></div>
+          <div class="logo-dl-wrap">
+            <button class="btn" onclick="toggleLogoMenu('menu-pd')">↓ Export ▾</button>
+            <div class="logo-dl-menu" id="menu-pd">
+              <div class="dl-menu-header">Format</div>
+              <button class="dl-menu-item" onclick="exportLogo('primary-dark','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('primary-dark','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('primary-dark','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('primary-dark','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            const getStackedLogotype = (cx, cy, scale, fill="#1c9985") => `
-                <g transform="translate(${cx}, ${cy}) scale(${scale})">
-                    <text x="100" y="30" text-anchor="middle" font-family="'Quicksand', sans-serif" font-weight="600" font-size="28px" letter-spacing="-0.5px" fill="${fill}">the eye</text>
-                    <text x="100" y="60" text-anchor="middle" font-family="'Quicksand', sans-serif" font-weight="600" font-size="28px" letter-spacing="-0.5px" fill="${fill}">centre</text>
-                </g>`;
+      <!-- Reversed Teal -->
+      <div class="card">
+        <div class="card-preview" style="background:#2aaa8a;">
+          <div class="logo-inline">
+            <div class="mark" style="width:64px;height:64px;background:rgba(255,255,255,0.2);border:1.5px solid rgba(255,255,255,0.35);">
+              <svg width="54" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+            <span style="font-size:1.4rem;color:white;">the eye centre</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div><div class="card-label">Reversed — Teal</div><div class="card-sub">Usage on brand teal backgrounds</div></div>
+          <div class="logo-dl-wrap">
+            <button class="btn" onclick="toggleLogoMenu('menu-rt')">↓ Export ▾</button>
+            <div class="logo-dl-menu" id="menu-rt">
+              <div class="dl-menu-header">Format</div>
+              <button class="dl-menu-item" onclick="exportLogo('reversed-teal','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('reversed-teal','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('reversed-teal','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('reversed-teal','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            // Switch structure to handle all exhaustive ratios and scales
-            switch(type) {
-                // CORE LOGOS
-                case 'core-primary':
-                    filename = 'the-eye-centre-primary.svg';
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455 80" width="455" height="80"><defs>${styleDef}</defs>${getMark(0, 0, 1)}${getLogotype(95, 0, 1)}</svg>`;
-                    break;
-                case 'core-stacked':
-                    filename = 'the-eye-centre-stacked.svg';
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" width="200" height="180"><defs>${styleDef}</defs>${getMark(60, 0, 1)}${getStackedLogotype(0, 95, 1)}</svg>`;
-                    break;
-                case 'core-monochrome':
-                    filename = 'the-eye-centre-monochrome.svg';
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455 80" width="455" height="80"><defs>${styleDef}</defs>${getMark(0, 0, 1, "#1e293b", "#ffffff")}${getLogotype(95, 0, 1, "#1e293b")}</svg>`;
-                    break;
-                case 'core-inverted':
-                    filename = 'the-eye-centre-inverted.svg';
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 455 80" width="455" height="80"><defs>${styleDef}</defs>${getMark(0, 0, 1, "#ffffff", "#1c9985")}${getLogotype(95, 0, 1, "#ffffff")}</svg>`;
-                    break;
+      <!-- Teal Tint -->
+      <div class="card">
+        <div class="card-preview" style="background:#e1f5ee;">
+          <div class="logo-inline">
+            <div class="mark" style="width:64px;height:64px;background:#2aaa8a;">
+              <svg width="54" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+            <span style="font-size:1.4rem;color:#0f6e56;">the eye centre</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div><div class="card-label">On Teal Tint</div><div class="card-sub">Usage on tint/light teal backgrounds</div></div>
+          <div class="logo-dl-wrap">
+            <button class="btn" onclick="toggleLogoMenu('menu-tt')">↓ Export ▾</button>
+            <div class="logo-dl-menu" id="menu-tt">
+              <div class="dl-menu-header">Format</div>
+              <button class="dl-menu-item" onclick="exportLogo('teal-tint','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('teal-tint','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('teal-tint','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button>
+              <button class="dl-menu-item" onclick="exportLogo('teal-tint','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                // SOCIAL PROFILES (1:1)
-                case 'social-ig-profile':
-                    filename = 'the-eye-centre-ig-profile.svg';
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080"><defs>${styleDef}</defs><rect width="1080" height="1080" fill="#e0f4f1"/>${getMark(140, 140, 10)}</svg>`;
-                    break;
-                case 'social-fb-profile':
-                    filename = 'the-eye-centre-fb-profile.svg';
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080"><defs>${styleDef}</defs><rect width="1080" height="1080" fill="#f1f5f9"/>${getMark(140, 140, 10)}</svg>`;
-                    break;
-                case 'social-x-profile':
-                    filename = 'the-eye-centre-x-profile.svg';
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400"><defs>${styleDef}</defs><rect width="400" height="400" fill="#ffffff"/>${getMark(40, 40, 4)}</svg>`;
-                    break;
-                case 'social-li-profile':
-                    filename = 'the-eye-centre-li-profile.svg';
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400"><defs>${styleDef}</defs><rect width="400" height="400" fill="#115e52"/>${getMark(40, 40, 4, "#ffffff", "#1c9985")}</svg>`;
-                    break;
+    <!-- Icon marks only -->
+    <h3 style="font-family:var(--font-head);font-size:1.1rem;margin:2rem 0 0.75rem;">Icon mark only</h3>
+    <div class="grid-4">
+      <div class="card">
+        <div class="card-preview" style="background:#fff;height:120px;">
+          <div class="mark" style="width:80px;height:80px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <svg width="68" height="32" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+          </div>
+        </div>
+        <div class="card-footer"><div class="card-label">Teal circle</div><div class="logo-dl-wrap"><button class="btn" onclick="toggleLogoMenu('menu-iteal')">↓ Export ▾</button><div class="logo-dl-menu" id="menu-iteal"><div class="dl-menu-header">Format</div><button class="dl-menu-item" onclick="exportIcon('icon-teal','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-teal','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-teal','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-teal','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button></div></div></div>
+      </div>
+      <div class="card">
+        <div class="card-preview" style="background:#1a2420;height:120px;">
+          <div class="mark" style="width:80px;height:80px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <svg width="68" height="32" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+          </div>
+        </div>
+        <div class="card-footer"><div class="card-label">On dark</div><div class="logo-dl-wrap"><button class="btn" onclick="toggleLogoMenu('menu-idark')">↓ Export ▾</button><div class="logo-dl-menu" id="menu-idark"><div class="dl-menu-header">Format</div><button class="dl-menu-item" onclick="exportIcon('icon-dark','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-dark','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-dark','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-dark','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button></div></div></div>
+      </div>
+      <div class="card">
+        <div class="card-preview" style="background:#2aaa8a;height:120px;">
+          <div class="mark" style="width:80px;height:80px;background:rgba(255,255,255,0.2);border-radius:50%;border:1.5px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;">
+            <svg width="68" height="32" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+          </div>
+        </div>
+        <div class="card-footer"><div class="card-label">Reversed</div><div class="logo-dl-wrap"><button class="btn" onclick="toggleLogoMenu('menu-irev')">↓ Export ▾</button><div class="logo-dl-menu" id="menu-irev"><div class="dl-menu-header">Format</div><button class="dl-menu-item" onclick="exportIcon('icon-reversed','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-reversed','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-reversed','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-reversed','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button></div></div></div>
+      </div>
+      <div class="card">
+        <div class="card-preview" style="background:#f7f9f8;height:120px;">
+          <div class="mark" style="width:80px;height:80px;background:#e1f5ee;border-radius:50%;border:1.5px solid #5dcaa5;display:flex;align-items:center;justify-content:center;">
+            <svg width="68" height="32" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="#2aaa8a" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+          </div>
+        </div>
+        <div class="card-footer"><div class="card-label">Tint variant</div><div class="logo-dl-wrap"><button class="btn" onclick="toggleLogoMenu('menu-itint')">↓ Export ▾</button><div class="logo-dl-menu" id="menu-itint"><div class="dl-menu-header">Format</div><button class="dl-menu-item" onclick="exportIcon('icon-tint','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-tint','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-tint','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportIcon('icon-tint','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button></div></div></div>
+      </div>
+    </div>
 
-                // SOCIAL BANNERS
-                case 'banner-fb':
-                    filename = 'the-eye-centre-fb-cover.svg'; // 455 * 1.5 = 682.5 wide. (820-682.5)/2 = 68.75. Height 80*1.5=120. (312-120)/2 = 96
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 312" width="820" height="312"><defs>${styleDef}</defs><rect width="820" height="312" fill="#f1f5f9"/><g transform="translate(68.75, 96)">${getMark(0, 0, 1.5)}${getLogotype(142.5, 0, 1.5)}</g></svg>`;
-                    break;
-                case 'banner-li':
-                    filename = 'the-eye-centre-li-banner.svg'; // 455 * 2 = 910 wide. (1584-910)/2 = 337. Height 80*2=160. (396-160)/2 = 118
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" width="1584" height="396"><defs>${styleDef}</defs><rect width="1584" height="396" fill="#115e52"/><g transform="translate(337, 118)">${getMark(0, 0, 2, "#ffffff", "#1c9985")}${getLogotype(190, 0, 2, "#ffffff")}</g></svg>`;
-                    break;
-                case 'banner-x':
-                    filename = 'the-eye-centre-x-header.svg'; // 455 * 2 = 910 wide. (1500-910)/2 = 295. Height 80*2=160. (500-160)/2 = 170
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" width="1500" height="500"><defs>${styleDef}</defs><rect width="1500" height="500" fill="#e0f4f1"/><g transform="translate(295, 170)">${getMark(0, 0, 2)}${getLogotype(190, 0, 2)}</g></svg>`;
-                    break;
-                case 'banner-yt':
-                    filename = 'the-eye-centre-yt-art.svg'; // 455 * 3 = 1365 wide. (2560-1365)/2 = 597.5. Height 80*3=240. (1440-240)/2 = 600
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440"><defs>${styleDef}</defs><rect width="2560" height="1440" fill="#1e293b"/><g transform="translate(597.5, 600)">${getMark(0, 0, 3, "#ffffff", "#1c9985")}${getLogotype(285, 0, 3, "#ffffff")}</g></svg>`;
-                    break;
+    <div class="btn-row">
+      <button class="btn-primary btn" onclick="downloadAllLogos('svg')">↓ All logos SVG</button>
+      <button class="btn-outline btn" onclick="downloadAllLogos('png')">↓ All logos PNG</button>
+      <button class="btn-outline btn" onclick="downloadAllLogos('jpg')">↓ All logos JPG</button>
+      <button class="btn-outline btn" onclick="downloadAllLogos('webp')">↓ All logos WebP</button>
+    </div>
+  </section>
 
-                // DIGITAL & LAYOUTS
-                case 'layout-og':
-                    filename = 'the-eye-centre-og-image.svg'; // 455 * 1.5 = 682.5 wide. (1200-682.5)/2 = 258.75. Height 120. (630-120)/2 = 255
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630"><defs>${styleDef}</defs><rect width="1200" height="630" fill="#ffffff"/><g transform="translate(258.75, 255)">${getMark(0, 0, 1.5)}${getLogotype(142.5, 0, 1.5)}</g></svg>`;
-                    break;
-                case 'layout-favicon':
-                    filename = 'favicon.svg'; // Transparent BG. Scale 6 = 480x480. (512-480)/2 = 16.
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><defs>${styleDef}</defs>${getMark(16, 16, 6)}</svg>`;
-                    break;
-                case 'layout-story':
-                    filename = 'the-eye-centre-story-bg.svg'; // Stacked scale 3 = 600 wide, 540 high. (1080-600)/2 = 240. (1920-540)/2 = 690
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920"><defs>${styleDef}</defs><rect width="1080" height="1920" fill="#e0f4f1"/><g transform="translate(240, 690)">${getMark(180, 0, 3)}${getStackedLogotype(0, 285, 3)}</g></svg>`;
-                    break;
-                case 'layout-presentation':
-                    filename = 'the-eye-centre-slide-16x9.svg'; // 455 * 2.5 = 1137.5. (1920-1137.5)/2 = 391.25. Height 200. (1080-200)/2 = 440
-                    svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080"><defs>${styleDef}</defs><rect width="1920" height="1080" fill="#ffffff"/><g transform="translate(391.25, 440)">${getMark(0, 0, 2.5)}${getLogotype(237.5, 0, 2.5)}</g></svg>`;
-                    break;
-            }
+  <!-- ══════════════════════════════════════════
+       COLOURS
+  ══════════════════════════════════════════ -->
+  <section class="section" id="colours">
+    <h2 class="section-title">Colour Palette</h2>
+    <p class="section-sub">The Eye Centre's palette is built around a signature teal. Always use these exact values across all applications.</p>
 
-            // Create a Blob and trigger the browser download
-            if (svgContent) {
-                const blob = new Blob([svgContent], {type: 'image/svg+xml'});
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            }
-        }
-    </script>
+    <div class="palette-row">
+      <div class="palette-cell" style="background:#2aaa8a;color:rgba(255,255,255,0.8);">Primary</div>
+      <div class="palette-cell" style="background:#1d8a6f;color:rgba(255,255,255,0.8);">Dark</div>
+      <div class="palette-cell" style="background:#5dcaa5;color:rgba(255,255,255,0.9);">Mid</div>
+      <div class="palette-cell" style="background:#e1f5ee;color:#0f6e56;">Tint</div>
+      <div class="palette-cell" style="background:#1a2420;color:rgba(255,255,255,0.7);">Forest</div>
+      <div class="palette-cell" style="background:#4a5550;color:rgba(255,255,255,0.7);">Slate</div>
+      <div class="palette-cell" style="background:#ccd9d4;color:#4a5550;">Mist</div>
+      <div class="palette-cell" style="background:#f7f9f8;border-left:0.5px solid #e0e8e4;color:#4a5550;">Off White</div>
+    </div>
+
+    <div class="grid-4">
+      <div class="colour-swatch"><div class="swatch-fill" style="background:#2aaa8a;"></div><div class="swatch-info"><div class="swatch-name">Teal Primary</div><div class="swatch-hex">#2AAA8A</div><div class="swatch-rgb">R42 G170 B138</div></div></div>
+      <div class="colour-swatch"><div class="swatch-fill" style="background:#1d8a6f;"></div><div class="swatch-info"><div class="swatch-name">Teal Dark</div><div class="swatch-hex">#1D8A6F</div><div class="swatch-rgb">R29 G138 B111</div></div></div>
+      <div class="colour-swatch"><div class="swatch-fill" style="background:#5dcaa5;"></div><div class="swatch-info"><div class="swatch-name">Teal Mid</div><div class="swatch-hex">#5DCAA5</div><div class="swatch-rgb">R93 G202 B165</div></div></div>
+      <div class="colour-swatch"><div class="swatch-fill" style="background:#e1f5ee;border:0.5px solid #c0e8d8;"></div><div class="swatch-info"><div class="swatch-name">Teal Tint</div><div class="swatch-hex">#E1F5EE</div><div class="swatch-rgb">R225 G245 B238</div></div></div>
+      <div class="colour-swatch"><div class="swatch-fill" style="background:#1a2420;"></div><div class="swatch-info"><div class="swatch-name">Deep Forest</div><div class="swatch-hex">#1A2420</div><div class="swatch-rgb">R26 G36 B32</div></div></div>
+      <div class="colour-swatch"><div class="swatch-fill" style="background:#4a5550;"></div><div class="swatch-info"><div class="swatch-name">Slate</div><div class="swatch-hex">#4A5550</div><div class="swatch-rgb">R74 G85 B80</div></div></div>
+      <div class="colour-swatch"><div class="swatch-fill" style="background:#ccd9d4;"></div><div class="swatch-info"><div class="swatch-name">Mist</div><div class="swatch-hex">#CCD9D4</div><div class="swatch-rgb">R204 G217 B212</div></div></div>
+      <div class="colour-swatch"><div class="swatch-fill" style="background:#f7f9f8;border:0.5px solid #e0e8e4;"></div><div class="swatch-info"><div class="swatch-name">Off White</div><div class="swatch-hex">#F7F9F8</div><div class="swatch-rgb">R247 G249 B248</div></div></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       TYPOGRAPHY
+  ══════════════════════════════════════════ -->
+  <section class="section" id="typography">
+    <h2 class="section-title">Typography</h2>
+    <p class="section-sub">Two typefaces only. DM Serif Display for headings and brand voice. DM Sans for all body copy, UI, and captions.</p>
+
+    <div class="type-block">
+      <div class="type-tag">Display — DM Serif Display · Headings, logo wordmark, key messaging</div>
+      <div style="font-family:var(--font-head);font-size:2.6rem;line-height:1.1;color:var(--forest);">the eye centre</div>
+      <div style="font-family:var(--font-head);font-size:2.6rem;line-height:1.1;font-style:italic;color:var(--teal);">Clarity. Care. Vision.</div>
+      <div style="font-family:var(--font-head);font-size:1.4rem;line-height:1.3;color:var(--slate);margin-top:8px;">Same-day glasses. Expert care.</div>
+    </div>
+
+    <div class="type-block">
+      <div class="type-tag">Body — DM Sans · All body copy, captions, UI labels</div>
+      <div style="font-weight:300;font-size:1rem;color:var(--slate);margin-bottom:6px;">Light 300 — Supporting copy and captions, secondary information</div>
+      <div style="font-weight:400;font-size:1rem;color:var(--forest);margin-bottom:6px;">Regular 400 — Body copy, descriptions, general text throughout</div>
+      <div style="font-weight:500;font-size:1rem;color:var(--forest);margin-bottom:6px;">Medium 500 — Labels, buttons, navigation items, bold UI text</div>
+      <div style="font-weight:600;font-size:1rem;color:var(--forest);">Semibold 600 — Key callouts, pricing, important emphasis</div>
+    </div>
+
+    <div class="grid-2">
+      <div class="type-block" style="margin-bottom:0;">
+        <div class="type-tag">Type scale</div>
+        <div style="font-family:var(--font-head);font-size:2rem;">H1 — 32px Display</div>
+        <div style="font-family:var(--font-head);font-size:1.5rem;">H2 — 24px Display</div>
+        <div style="font-family:var(--font-head);font-size:1.15rem;">H3 — 18px Display</div>
+        <div style="font-size:1rem;margin-top:4px;">Body — 16px Sans Regular</div>
+        <div style="font-size:0.85rem;color:var(--slate);">Caption — 14px Sans Light</div>
+        <div style="font-size:0.7rem;color:var(--mist);font-weight:500;text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;">Label — 11px Sans Medium</div>
+      </div>
+      <div class="type-block" style="margin-bottom:0;">
+        <div class="type-tag">Sample copy</div>
+        <div style="font-family:var(--font-head);font-size:1.2rem;margin-bottom:8px;">See the world clearly.</div>
+        <div style="font-size:0.9rem;color:var(--slate);line-height:1.7;">At The Eye Centre, we combine expert optical care with same-day service — because your vision shouldn't wait. Walk in, walk out seeing better.</div>
+        <div style="font-size:0.75rem;color:var(--mist);margin-top:8px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;">Book your eye test today →</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       USAGE RULES
+  ══════════════════════════════════════════ -->
+  <section class="section" id="usage">
+    <h2 class="section-title">Logo Usage Rules</h2>
+    <p class="section-sub">Follow these rules to keep the brand consistent and professional across every touchpoint.</p>
+
+    <div class="grid-2">
+      <div class="usage-card do"><span class="usage-badge bd">Do</span><p class="usage-rule">Use the teal circle with white spectacles as the primary brand mark on all touchpoints</p></div>
+      <div class="usage-card dont"><span class="usage-badge bx">Don't</span><p class="usage-rule">Place the logo on busy photographic backgrounds without a clear exclusion zone</p></div>
+      <div class="usage-card do"><span class="usage-badge bd">Do</span><p class="usage-rule">Maintain clear space equal to the height of the circle on all four sides at minimum</p></div>
+      <div class="usage-card dont"><span class="usage-badge bx">Don't</span><p class="usage-rule">Stretch, skew, rotate, recolour, or apply effects to any part of the logo</p></div>
+      <div class="usage-card do"><span class="usage-badge bd">Do</span><p class="usage-rule">Use the fully white reversed version when placing on the teal primary background</p></div>
+      <div class="usage-card dont"><span class="usage-badge bx">Don't</span><p class="usage-rule">Use the icon mark below 24px rendered size — it loses legibility at very small sizes</p></div>
+      <div class="usage-card do"><span class="usage-badge bd">Do</span><p class="usage-rule">Use DM Serif Display for the wordmark only — never substitute with other typefaces</p></div>
+      <div class="usage-card dont"><span class="usage-badge bx">Don't</span><p class="usage-rule">Place the wordmark without the icon mark except where space constraints require it</p></div>
+    </div>
+
+    <div class="divider"></div>
+    <h3 style="font-family:var(--font-head);font-size:1.1rem;margin-bottom:0.75rem;">Minimum sizes</h3>
+    <div style="display:flex;gap:2rem;align-items:flex-end;padding:1.5rem;background:var(--white);border:0.5px solid var(--border);border-radius:var(--radius);flex-wrap:wrap;">
+      <div style="text-align:center;">
+        <div style="display:flex;align-items:center;gap:6px;justify-content:center;margin-bottom:6px;">
+          <div style="width:24px;height:24px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="20" height="10" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+        </div>
+        <div style="font-size:11px;color:var(--slate);">24px min<br>icon only</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:6px;">
+          <div style="width:40px;height:40px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="34" height="15" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+          <span style="font-family:var(--font-head);font-size:0.8rem;">the eye centre</span>
+        </div>
+        <div style="font-size:11px;color:var(--slate);">40px min<br>full lockup</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px;">
+          <div style="width:64px;height:64px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="54" height="24" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+          <span style="font-family:var(--font-head);font-size:1.2rem;">the eye centre</span>
+        </div>
+        <div style="font-size:11px;color:var(--slate);">64px recommended<br>print & digital</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SOCIAL MEDIA
+  ══════════════════════════════════════════ -->
+
+  <!-- INSTAGRAM -->
+  <section class="section" id="instagram">
+    <h2 class="section-title">Instagram</h2>
+    <p class="section-sub">Instagram supports multiple formats. Maintain brand colours and always include the logo mark.</p>
+
+    <div class="social-platform">
+      <div class="social-header">
+        <div class="social-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <div><h3>Instagram</h3><p>1B+ users · Visual-first platform</p></div>
+      </div>
+      <div class="social-grid">
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:80px;height:80px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="64" height="28" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Profile Picture</div>
+          <div class="format-size">320 × 320 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-igprofile')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-igprofile"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('ig-profile',320,320,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-profile',320,320,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-profile',320,320,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-profile',320,320,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:82px;height:82px;background:#2aaa8a;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <svg width="68" height="30" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Square Post</div>
+          <div class="format-size">1080 × 1080 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-igsquare')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-igsquare"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('ig-square',1080,1080,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-square',1080,1080,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-square',1080,1080,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-square',1080,1080,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:62px;height:110px;background:#1a2420;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <svg width="52" height="22" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Portrait Post</div>
+          <div class="format-size">1080 × 1350 px</div>
+          <div class="format-ratio">4:5</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-igportrait')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-igportrait"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('ig-portrait',1080,1350,'#1a2420','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-portrait',1080,1350,'#1a2420','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-portrait',1080,1350,'#1a2420','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-portrait',1080,1350,'#1a2420','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:62px;height:110px;background:#2aaa8a;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <svg width="52" height="22" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Story / Reel</div>
+          <div class="format-size">1080 × 1920 px</div>
+          <div class="format-ratio">9:16</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-igstory')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-igstory"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('ig-story',1080,1920,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-story',1080,1920,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-story',1080,1920,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-story',1080,1920,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:108px;height:60px;background:#e1f5ee;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <div style="width:34px;height:34px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="28" height="12" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.5rem;color:#0f6e56;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Landscape Post</div>
+          <div class="format-size">1080 × 566 px</div>
+          <div class="format-ratio">1.91:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-iglandscape')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-iglandscape"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('ig-landscape',1080,566,'#e1f5ee','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-landscape',1080,566,'#e1f5ee','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-landscape',1080,566,'#e1f5ee','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('ig-landscape',1080,566,'#e1f5ee','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACEBOOK -->
+  <section class="section" id="facebook">
+    <h2 class="section-title">Facebook</h2>
+    <p class="section-sub">Facebook requires both square and landscape formats depending on placement.</p>
+
+    <div class="social-platform">
+      <div class="social-header">
+        <div class="social-icon" style="background:#1877f2;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <div><h3>Facebook</h3><p>3B+ users · Multi-format social network</p></div>
+      </div>
+      <div class="social-grid">
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:80px;height:80px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="64" height="28" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Profile Picture</div>
+          <div class="format-size">320 × 320 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-fbprofile')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-fbprofile"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('fb-profile',320,320,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-profile',320,320,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-profile',320,320,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-profile',320,320,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:108px;height:40px;background:#1a2420;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <div style="width:26px;height:26px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="22" height="10" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.4rem;color:white;white-space:nowrap;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Cover Photo</div>
+          <div class="format-size">820 × 312 px</div>
+          <div class="format-ratio">2.63:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-fbcover')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-fbcover"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('fb-cover',820,312,'#1a2420','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-cover',820,312,'#1a2420','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-cover',820,312,'#1a2420','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-cover',820,312,'#1a2420','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:82px;height:82px;background:#2aaa8a;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <svg width="68" height="30" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Square Post</div>
+          <div class="format-size">1080 × 1080 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-fbsquare')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-fbsquare"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('fb-square',1080,1080,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-square',1080,1080,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-square',1080,1080,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-square',1080,1080,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:108px;height:57px;background:#e1f5ee;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <div style="width:32px;height:32px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="26" height="12" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.45rem;color:#0f6e56;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Shared Link</div>
+          <div class="format-size">1200 × 630 px</div>
+          <div class="format-ratio">1.91:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-fblink')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-fblink"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('fb-link',1200,630,'#e1f5ee','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-link',1200,630,'#e1f5ee','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-link',1200,630,'#e1f5ee','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-link',1200,630,'#e1f5ee','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:62px;height:110px;background:#2aaa8a;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <svg width="52" height="22" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Story</div>
+          <div class="format-size">1080 × 1920 px</div>
+          <div class="format-ratio">9:16</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-fbstory')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-fbstory"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('fb-story',1080,1920,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-story',1080,1920,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-story',1080,1920,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-story',1080,1920,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:108px;height:86px;background:#1a2420;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <div style="width:36px;height:36px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="30" height="14" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.5rem;color:white;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Event Cover</div>
+          <div class="format-size">1920 × 1005 px</div>
+          <div class="format-ratio">1.91:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-fbevent')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-fbevent"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('fb-event',1920,1005,'#1a2420','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-event',1920,1005,'#1a2420','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-event',1920,1005,'#1a2420','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('fb-event',1920,1005,'#1a2420','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- X / TWITTER -->
+  <section class="section" id="twitter">
+    <h2 class="section-title">X / Twitter</h2>
+    <p class="section-sub">X uses square profile images and wide banner headers.</p>
+
+    <div class="social-platform">
+      <div class="social-header">
+        <div class="social-icon" style="background:#000;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <div><h3>X / Twitter</h3><p>550M+ users · Real-time conversation</p></div>
+      </div>
+      <div class="social-grid">
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:80px;height:80px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="64" height="28" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Profile Picture</div>
+          <div class="format-size">400 × 400 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-xprofile')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-xprofile"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('x-profile',400,400,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('x-profile',400,400,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('x-profile',400,400,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('x-profile',400,400,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:108px;height:36px;background:#1a2420;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <div style="width:24px;height:24px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="9" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.35rem;color:white;white-space:nowrap;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Header / Banner</div>
+          <div class="format-size">1500 × 500 px</div>
+          <div class="format-ratio">3:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-xheader')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-xheader"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('x-header',1500,500,'#1a2420','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('x-header',1500,500,'#1a2420','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('x-header',1500,500,'#1a2420','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('x-header',1500,500,'#1a2420','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:82px;height:82px;background:#2aaa8a;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <svg width="68" height="30" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">In-feed Post</div>
+          <div class="format-size">1080 × 1080 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-xpost')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-xpost"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('x-post',1080,1080,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('x-post',1080,1080,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('x-post',1080,1080,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('x-post',1080,1080,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:108px;height:57px;background:#e1f5ee;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <div style="width:32px;height:32px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="26" height="12" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.45rem;color:#0f6e56;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Landscape Post</div>
+          <div class="format-size">1600 × 900 px</div>
+          <div class="format-ratio">16:9</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-xlandscape')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-xlandscape"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('x-landscape',1600,900,'#e1f5ee','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('x-landscape',1600,900,'#e1f5ee','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('x-landscape',1600,900,'#e1f5ee','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('x-landscape',1600,900,'#e1f5ee','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINKEDIN -->
+  <section class="section" id="linkedin">
+    <h2 class="section-title">LinkedIn</h2>
+    <p class="section-sub">LinkedIn is professional-first. Use clean, on-brand layouts with the wordmark visible.</p>
+
+    <div class="social-platform">
+      <div class="social-header">
+        <div class="social-icon" style="background:#0077b5;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </div>
+        <div><h3>LinkedIn</h3><p>1B+ users · Professional network</p></div>
+      </div>
+      <div class="social-grid">
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:80px;height:80px;background:#2aaa8a;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <svg width="64" height="28" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Company Logo</div>
+          <div class="format-size">300 × 300 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-lilogo')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-lilogo"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('li-logo',300,300,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('li-logo',300,300,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('li-logo',300,300,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('li-logo',300,300,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:108px;height:36px;background:#2aaa8a;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <div style="width:24px;height:24px;background:rgba(255,255,255,0.2);border-radius:50%;border:1px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="9" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.38rem;color:white;white-space:nowrap;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Page Cover</div>
+          <div class="format-size">1128 × 191 px</div>
+          <div class="format-ratio">5.9:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-licover')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-licover"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('li-cover',1128,191,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('li-cover',1128,191,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('li-cover',1128,191,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('li-cover',1128,191,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:108px;height:57px;background:#1a2420;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <div style="width:32px;height:32px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="26" height="12" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.45rem;color:white;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Shared Post</div>
+          <div class="format-size">1200 × 627 px</div>
+          <div class="format-ratio">1.91:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-lipost')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-lipost"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('li-post',1200,627,'#1a2420','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('li-post',1200,627,'#1a2420','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('li-post',1200,627,'#1a2420','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('li-post',1200,627,'#1a2420','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:82px;height:82px;background:#e1f5ee;border-radius:4px;border:0.5px solid #c0e8d8;display:flex;align-items:center;justify-content:center;">
+              <svg width="68" height="30" viewBox="0 0 16 16"><path fill="#2aaa8a" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Square Post</div>
+          <div class="format-size">1080 × 1080 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-lisquare')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-lisquare"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('li-square',1080,1080,'#e1f5ee','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('li-square',1080,1080,'#e1f5ee','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('li-square',1080,1080,'#e1f5ee','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('li-square',1080,1080,'#e1f5ee','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YOUTUBE -->
+  <section class="section" id="youtube">
+    <h2 class="section-title">YouTube</h2>
+    <p class="section-sub">YouTube requires wide-format art. Channel art must work across desktop, TV, and mobile crops.</p>
+
+    <div class="social-platform">
+      <div class="social-header">
+        <div class="social-icon" style="background:#ff0000;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+        </div>
+        <div><h3>YouTube</h3><p>2.7B+ users · Video platform</p></div>
+      </div>
+      <div class="social-grid">
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:80px;height:80px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="64" height="28" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Profile Picture</div>
+          <div class="format-size">800 × 800 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-ytprofile')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-ytprofile"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('yt-profile',800,800,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-profile',800,800,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-profile',800,800,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-profile',800,800,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:108px;height:61px;background:#1a2420;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <div style="width:32px;height:32px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="26" height="12" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.45rem;color:white;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Channel Art</div>
+          <div class="format-size">2560 × 1440 px</div>
+          <div class="format-ratio">16:9</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-ytbanner')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-ytbanner"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('yt-banner',2560,1440,'#1a2420','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-banner',2560,1440,'#1a2420','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-banner',2560,1440,'#1a2420','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-banner',2560,1440,'#1a2420','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:108px;height:60px;background:#2aaa8a;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <div style="width:32px;height:32px;background:rgba(255,255,255,0.2);border-radius:50%;border:1px solid rgba(255,255,255,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="26" height="12" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.45rem;color:white;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Video Thumbnail</div>
+          <div class="format-size">1280 × 720 px</div>
+          <div class="format-ratio">16:9</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-ytthumb')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-ytthumb"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('yt-thumb',1280,720,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-thumb',1280,720,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-thumb',1280,720,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-thumb',1280,720,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:62px;height:110px;background:#e1f5ee;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <svg width="52" height="22" viewBox="0 0 16 16"><path fill="#2aaa8a" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">YouTube Short</div>
+          <div class="format-size">1080 × 1920 px</div>
+          <div class="format-ratio">9:16</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-ytshort')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-ytshort"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('yt-short',1080,1920,'#e1f5ee','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-short',1080,1920,'#e1f5ee','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-short',1080,1920,'#e1f5ee','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('yt-short',1080,1920,'#e1f5ee','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIKTOK -->
+  <section class="section" id="tiktok">
+    <h2 class="section-title">TikTok</h2>
+    <p class="section-sub">TikTok is vertical-first. All content should be optimised for 9:16 portrait format.</p>
+
+    <div class="social-platform">
+      <div class="social-header">
+        <div class="social-icon" style="background:#010101;">
+          <svg width="16" height="18" viewBox="0 0 24 24" fill="white"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </div>
+        <div><h3>TikTok</h3><p>1.7B+ users · Short-form video</p></div>
+      </div>
+      <div class="social-grid">
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:80px;height:80px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="64" height="28" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Profile Picture</div>
+          <div class="format-size">200 × 200 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-ttprofile')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-ttprofile"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('tt-profile',200,200,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('tt-profile',200,200,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('tt-profile',200,200,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('tt-profile',200,200,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:62px;height:110px;background:#1a2420;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <svg width="52" height="22" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Video / Post</div>
+          <div class="format-size">1080 × 1920 px</div>
+          <div class="format-ratio">9:16</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-ttvideo')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-ttvideo"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('tt-video',1080,1920,'#1a2420','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('tt-video',1080,1920,'#1a2420','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('tt-video',1080,1920,'#1a2420','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('tt-video',1080,1920,'#1a2420','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:82px;height:82px;background:#2aaa8a;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <svg width="68" height="30" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Square Post</div>
+          <div class="format-size">1080 × 1080 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-ttsquare')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-ttsquare"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('tt-square',1080,1080,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('tt-square',1080,1080,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('tt-square',1080,1080,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('tt-square',1080,1080,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP -->
+  <section class="section" id="whatsapp">
+    <h2 class="section-title">WhatsApp Business</h2>
+    <p class="section-sub">WhatsApp Business profile and status assets for direct customer communication.</p>
+
+    <div class="social-platform">
+      <div class="social-header">
+        <div class="social-icon" style="background:#25d366;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div><h3>WhatsApp Business</h3><p>Direct customer communication</p></div>
+      </div>
+      <div class="social-grid">
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:80px;height:80px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+              <svg width="64" height="28" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Profile Picture</div>
+          <div class="format-size">500 × 500 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-waprofile')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-waprofile"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('wa-profile',500,500,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('wa-profile',500,500,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('wa-profile',500,500,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('wa-profile',500,500,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:62px;height:110px;background:#2aaa8a;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <svg width="52" height="22" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Status</div>
+          <div class="format-size">1080 × 1920 px</div>
+          <div class="format-ratio">9:16</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-wastatus')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-wastatus"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('wa-status',1080,1920,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('wa-status',1080,1920,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('wa-status',1080,1920,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('wa-status',1080,1920,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:82px;height:82px;background:#e1f5ee;border-radius:4px;border:0.5px solid #c0e8d8;display:flex;align-items:center;justify-content:center;">
+              <svg width="68" height="30" viewBox="0 0 16 16"><path fill="#2aaa8a" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Shared Image</div>
+          <div class="format-size">1080 × 1080 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-waimage')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-waimage"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('wa-image',1080,1080,'#e1f5ee','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('wa-image',1080,1080,'#e1f5ee','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('wa-image',1080,1080,'#e1f5ee','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('wa-image',1080,1080,'#e1f5ee','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE BUSINESS -->
+  <section class="section" id="google">
+    <h2 class="section-title">Google Business Profile</h2>
+    <p class="section-sub">Google Business assets for local search visibility and Google Maps presence.</p>
+
+    <div class="social-platform">
+      <div class="social-header">
+        <div class="social-icon" style="background:#fff;border:0.5px solid #ddd;">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        </div>
+        <div><h3>Google Business Profile</h3><p>Local SEO and Maps visibility</p></div>
+      </div>
+      <div class="social-grid">
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:80px;height:80px;background:#2aaa8a;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+              <svg width="64" height="28" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+            </div>
+          </div>
+          <div class="format-name">Business Logo</div>
+          <div class="format-size">720 × 720 px</div>
+          <div class="format-ratio">1:1</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-gblogo')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-gblogo"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('gb-logo',720,720,'#2aaa8a','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('gb-logo',720,720,'#2aaa8a','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('gb-logo',720,720,'#2aaa8a','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('gb-logo',720,720,'#2aaa8a','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:108px;height:57px;background:#1a2420;border-radius:4px;display:flex;align-items:center;justify-content:center;gap:8px;">
+              <div style="width:32px;height:32px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="26" height="12" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.45rem;color:white;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Cover Photo</div>
+          <div class="format-size">1080 × 608 px</div>
+          <div class="format-ratio">16:9</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-gbcover')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-gbcover"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('gb-cover',1080,608,'#1a2420','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('gb-cover',1080,608,'#1a2420','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('gb-cover',1080,608,'#1a2420','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('gb-cover',1080,608,'#1a2420','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+        <div class="social-format">
+          <div class="format-preview" style="height:110px;">
+            <div style="width:82px;height:82px;background:#e1f5ee;border-radius:4px;border:0.5px solid #c0e8d8;display:flex;align-items:center;justify-content:center;gap:6px;flex-direction:column;">
+              <div style="width:36px;height:36px;background:#2aaa8a;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="30" height="14" viewBox="0 0 16 16"><path fill="white" d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg></div>
+              <span style="font-family:var(--font-head);font-size:0.4rem;color:#0f6e56;">the eye centre</span>
+            </div>
+          </div>
+          <div class="format-name">Post Image</div>
+          <div class="format-size">1200 × 900 px</div>
+          <div class="format-ratio">4:3</div>
+          <div class="dl-wrap"><button class="dl-format" onclick="toggleMenu('menu-gbpost')">↓ Export <span class="caret">▾</span></button><div class="dl-menu" id="menu-gbpost"><div class="dl-menu-header">Choose format</div><button class="dl-menu-item" onclick="exportSocial('gb-post',1200,900,'#e1f5ee','svg')">SVG — Scalable vector <span class="fmt-badge fmt-svg">SVG</span></button><button class="dl-menu-item" onclick="exportSocial('gb-post',1200,900,'#e1f5ee','png')">PNG — Transparent support <span class="fmt-badge fmt-png">PNG</span></button><button class="dl-menu-item" onclick="exportSocial('gb-post',1200,900,'#e1f5ee','jpg')">JPG — Small file size <span class="fmt-badge fmt-jpg">JPG</span></button><button class="dl-menu-item" onclick="exportSocial('gb-post',1200,900,'#e1f5ee','webp')">WebP — Web optimised <span class="fmt-badge fmt-webp">WebP</span></button></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       DOWNLOADS
+  ══════════════════════════════════════════ -->
+  <section class="section" id="downloads">
+    <h2 class="section-title">Download All Assets</h2>
+    <p class="section-sub">Download individual files or complete platform packs as SVG and PNG.</p>
+
+    <div class="grid-2" style="gap:12px;margin-bottom:1rem;">
+      <div class="pack-card">
+        <div class="pack-icon">🎨</div>
+        <div class="pack-info">
+          <h4>Logo Pack — SVG</h4>
+          <p>All logo variants in scalable vector format</p>
+        </div>
+        <button class="btn-primary btn" style="margin-left:auto;white-space:nowrap;" onclick="downloadAllLogos('svg')">↓ Download</button>
+      </div>
+      <div class="pack-card">
+        <div class="pack-icon">🖼️</div>
+        <div class="pack-info">
+          <h4>Logo Pack — PNG</h4>
+          <p>High-res PNG files at 2× resolution</p>
+        </div>
+        <button class="btn-primary btn" style="margin-left:auto;white-space:nowrap;" onclick="downloadAllLogos('png')">↓ Download</button>
+      </div>
+      <div class="pack-card">
+        <div class="pack-icon">📱</div>
+        <div class="pack-info">
+          <h4>Instagram Pack</h4>
+          <p>Profile, square, portrait, story, landscape</p>
+        </div>
+        <div class="logo-dl-wrap" style="margin-left:auto;">
+          <button class="btn btn-outline" onclick="toggleLogoMenu('menu-ig-pack')" style="white-space:nowrap;">↓ Download ▾</button>
+          <div class="logo-dl-menu" id="menu-ig-pack" style="right:0;left:auto;">
+            <div class="dl-menu-header">Format</div>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('instagram','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('instagram','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('instagram','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('instagram','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="pack-card">
+        <div class="pack-icon">📘</div>
+        <div class="pack-info">
+          <h4>Facebook Pack</h4>
+          <p>Profile, cover, post, story, event</p>
+        </div>
+        <div class="logo-dl-wrap" style="margin-left:auto;">
+          <button class="btn btn-outline" onclick="toggleLogoMenu('menu-fb-pack')" style="white-space:nowrap;">↓ Download ▾</button>
+          <div class="logo-dl-menu" id="menu-fb-pack" style="right:0;left:auto;">
+            <div class="dl-menu-header">Format</div>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('facebook','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('facebook','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('facebook','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('facebook','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="pack-card">
+        <div class="pack-icon">▶️</div>
+        <div class="pack-info">
+          <h4>YouTube Pack</h4>
+          <p>Profile, channel art, thumbnail, short</p>
+        </div>
+        <div class="logo-dl-wrap" style="margin-left:auto;">
+          <button class="btn btn-outline" onclick="toggleLogoMenu('menu-yt-pack')" style="white-space:nowrap;">↓ Download ▾</button>
+          <div class="logo-dl-menu" id="menu-yt-pack" style="right:0;left:auto;">
+            <div class="dl-menu-header">Format</div>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('youtube','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('youtube','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('youtube','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('youtube','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="pack-card">
+        <div class="pack-icon">💼</div>
+        <div class="pack-info">
+          <h4>LinkedIn Pack</h4>
+          <p>Logo, cover, shared post, square</p>
+        </div>
+        <div class="logo-dl-wrap" style="margin-left:auto;">
+          <button class="btn btn-outline" onclick="toggleLogoMenu('menu-li-pack')" style="white-space:nowrap;">↓ Download ▾</button>
+          <div class="logo-dl-menu" id="menu-li-pack" style="right:0;left:auto;">
+            <div class="dl-menu-header">Format</div>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('linkedin','svg')">SVG <span class="fmt-badge fmt-svg">SVG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('linkedin','png')">PNG <span class="fmt-badge fmt-png">PNG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('linkedin','jpg')">JPG <span class="fmt-badge fmt-jpg">JPG</span></button>
+            <button class="dl-menu-item" onclick="downloadPlatformPack('linkedin','webp')">WebP <span class="fmt-badge fmt-webp">WebP</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:1.5rem;background:var(--teal-tint);border-radius:var(--radius);border:0.5px solid #c0e8d8;margin-top:1rem;">
+      <div style="font-weight:500;color:var(--teal-deep);margin-bottom:6px;">📦 Complete Brand Pack</div>
+      <div style="font-size:13px;color:var(--slate);margin-bottom:1rem;">Every logo variant and all social media formats across all 8 platforms. Choose your format below.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn-primary btn" onclick="downloadCompletePack('svg')" style="font-size:13px;padding:10px 20px;">↓ Complete Pack — SVG</button>
+        <button class="btn-outline btn" onclick="downloadCompletePack('png')" style="font-size:13px;padding:10px 20px;">↓ Complete Pack — PNG</button>
+        <button class="btn-outline btn" onclick="downloadCompletePack('jpg')" style="font-size:13px;padding:10px 20px;">↓ Complete Pack — JPG</button>
+        <button class="btn-outline btn" onclick="downloadCompletePack('webp')" style="font-size:13px;padding:10px 20px;">↓ Complete Pack — WebP</button>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:1rem;">All assets use Bootstrap Icons eyeglasses (MIT License). Logo icon © The Eye Centre 2025. Fonts: DM Serif Display & DM Sans via Google Fonts (Open Font License).</div>
+  </section>
+
+</main>
+
+<script>
+const GLASSES_D = "M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4m2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A2 2 0 0 0 8 6c-.532 0-1.016.208-1.375.547M14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0";
+
+/* ── SVG BUILDERS ── */
+function buildLogoSVG(w, h, bg, circleFill, glassesFill, textColor, iconOnly) {
+  const cr = iconOnly ? Math.min(w,h)*0.44 : Math.min(h*0.42, h*0.42);
+  const cx = iconOnly ? w/2 : cr + h*0.1;
+  const cy = h/2;
+  const gScale = (cr * 2 * 0.82) / 16;
+  const gx = cx - (16 * gScale)/2;
+  const gy = cy - (16 * gScale)/2;
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`;
+  svg += `<rect width="${w}" height="${h}" fill="${bg}"/>`;
+  svg += `<circle cx="${cx}" cy="${cy}" r="${cr}" fill="${circleFill}"/>`;
+  svg += `<g transform="translate(${gx},${gy}) scale(${gScale})">`;
+  svg += `<path fill="${glassesFill}" d="${GLASSES_D}"/>`;
+  svg += `</g>`;
+  if (!iconOnly) {
+    const tx = cx + cr + 16;
+    const fs = h * 0.22;
+    svg += `<text x="${tx}" y="${cy + fs*0.38}" font-family="Georgia,'Times New Roman',serif" font-size="${fs}" fill="${textColor}">the eye centre</text>`;
+  }
+  svg += `</svg>`;
+  return svg;
+}
+
+function buildSocialSVG(w, h, bg) {
+  const isPortrait = h > w;
+  const scale = Math.min(w, h) * 0.55;
+  const cr = scale / 2;
+  const cx = w / 2;
+  const cy = isPortrait ? h * 0.42 : h / 2;
+  const gScale = (cr * 2 * 0.82) / 16;
+  const gx = cx - (16 * gScale)/2;
+  const gy = cy - (16 * gScale)/2;
+  const textColor = bg === '#e1f5ee' ? '#0f6e56' : (bg === '#ffffff' || bg === '#f7f9f8') ? '#1a2420' : 'white';
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`;
+  svg += `<rect width="${w}" height="${h}" fill="${bg}"/>`;
+  svg += `<circle cx="${cx}" cy="${cy}" r="${cr}" fill="#2aaa8a"/>`;
+  svg += `<g transform="translate(${gx},${gy}) scale(${gScale})">`;
+  svg += `<path fill="white" d="${GLASSES_D}"/>`;
+  svg += `</g>`;
+  if (isPortrait) {
+    const ty = h * 0.72;
+    const fs = w * 0.07;
+    svg += `<text x="${w/2}" y="${ty}" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="${fs}" fill="${textColor}">the eye centre</text>`;
+  } else if (w !== h) {
+    const ty = cy + cr * 0.7 + 20;
+    const fs = Math.min(w,h) * 0.06;
+    svg += `<text x="${w/2}" y="${ty}" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="${fs}" fill="${textColor}">the eye centre</text>`;
+  }
+  svg += `</svg>`;
+  return svg;
+}
+
+/* ── EXPORT ENGINE ── */
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+
+function exportFile(svgStr, w, h, filename, fmt) {
+  if (fmt === 'svg') {
+    downloadBlob(new Blob([svgStr], {type:'image/svg+xml'}), filename + '.svg');
+    return;
+  }
+  const scale = fmt === 'jpg' ? 1 : 2; // 2x for png/webp
+  const canvas = document.createElement('canvas');
+  canvas.width = w * (fmt !== 'jpg' ? 2 : 1);
+  canvas.height = h * (fmt !== 'jpg' ? 2 : 1);
+  const ctx = canvas.getContext('2d');
+  if (fmt === 'jpg') { ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+  const img = new Image();
+  const blob = new Blob([svgStr], {type:'image/svg+xml'});
+  const url = URL.createObjectURL(blob);
+  img.onload = () => {
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    const mimeMap = { png: 'image/png', jpg: 'image/jpeg', webp: 'image/webp' };
+    const qualMap = { png: 1, jpg: 0.92, webp: 0.9 };
+    canvas.toBlob(b => downloadBlob(b, filename + '.' + (fmt === 'jpg' ? 'jpg' : fmt)), mimeMap[fmt], qualMap[fmt]);
+    URL.revokeObjectURL(url);
+  };
+  img.src = url;
+}
+
+/* ── LOGO CONFIGS ── */
+const logoConfigs = {
+  'primary-light':  ['#ffffff','#2aaa8a','white','#1a2420'],
+  'primary-dark':   ['#1a2420','#2aaa8a','white','white'],
+  'reversed-teal':  ['#2aaa8a','rgba(255,255,255,0.18)','white','white'],
+  'teal-tint':      ['#e1f5ee','#2aaa8a','white','#0f6e56'],
+};
+const iconConfigs = {
+  'icon-teal':     ['#ffffff','#2aaa8a','white'],
+  'icon-dark':     ['#1a2420','#2aaa8a','white'],
+  'icon-reversed': ['#2aaa8a','rgba(255,255,255,0.18)','white'],
+  'icon-tint':     ['#f7f9f8','#e1f5ee','#2aaa8a'],
+};
+
+function exportLogo(key, fmt) {
+  closeAllMenus();
+  const [bg, cf, gf, tc] = logoConfigs[key];
+  exportFile(buildLogoSVG(520,140,bg,cf,gf,tc,false), 520, 140, `the-eye-centre-${key}`, fmt);
+}
+
+function exportIcon(key, fmt) {
+  closeAllMenus();
+  const [bg, cf, gf] = iconConfigs[key];
+  exportFile(buildLogoSVG(400,400,bg,cf,gf,'white',true), 400, 400, `the-eye-centre-${key}`, fmt);
+}
+
+function downloadAllLogos(fmt) {
+  let delay = 0;
+  Object.keys(logoConfigs).forEach(key => {
+    setTimeout(() => exportLogo(key, fmt), delay);
+    delay += 350;
+  });
+  Object.keys(iconConfigs).forEach(key => {
+    setTimeout(() => exportIcon(key, fmt), delay);
+    delay += 350;
+  });
+}
+
+/* ── SOCIAL ── */
+function exportSocial(id, w, h, bg, fmt) {
+  closeAllMenus();
+  exportFile(buildSocialSVG(w, h, bg), w, h, `the-eye-centre-${id}-${w}x${h}`, fmt);
+}
+
+const platformFormats = {
+  instagram: [['ig-profile',320,320,'#2aaa8a'],['ig-square',1080,1080,'#2aaa8a'],['ig-portrait',1080,1350,'#1a2420'],['ig-story',1080,1920,'#2aaa8a'],['ig-landscape',1080,566,'#e1f5ee']],
+  facebook:  [['fb-profile',320,320,'#2aaa8a'],['fb-cover',820,312,'#1a2420'],['fb-square',1080,1080,'#2aaa8a'],['fb-link',1200,630,'#e1f5ee'],['fb-story',1080,1920,'#2aaa8a'],['fb-event',1920,1005,'#1a2420']],
+  twitter:   [['x-profile',400,400,'#2aaa8a'],['x-header',1500,500,'#1a2420'],['x-post',1080,1080,'#2aaa8a'],['x-landscape',1600,900,'#e1f5ee']],
+  linkedin:  [['li-logo',300,300,'#2aaa8a'],['li-cover',1128,191,'#2aaa8a'],['li-post',1200,627,'#1a2420'],['li-square',1080,1080,'#e1f5ee']],
+  youtube:   [['yt-profile',800,800,'#2aaa8a'],['yt-banner',2560,1440,'#1a2420'],['yt-thumb',1280,720,'#2aaa8a'],['yt-short',1080,1920,'#e1f5ee']],
+  tiktok:    [['tt-profile',200,200,'#2aaa8a'],['tt-video',1080,1920,'#1a2420'],['tt-square',1080,1080,'#2aaa8a']],
+  whatsapp:  [['wa-profile',500,500,'#2aaa8a'],['wa-status',1080,1920,'#2aaa8a'],['wa-image',1080,1080,'#e1f5ee']],
+  google:    [['gb-logo',720,720,'#2aaa8a'],['gb-cover',1080,608,'#1a2420'],['gb-post',1200,900,'#e1f5ee']],
+};
+
+function downloadPlatformPack(platform, fmt) {
+  closeAllMenus();
+  const formats = platformFormats[platform] || [];
+  formats.forEach(([id, w, h, bg], i) => {
+    setTimeout(() => exportFile(buildSocialSVG(w, h, bg), w, h, `the-eye-centre-${id}-${w}x${h}`, fmt), i * 400);
+  });
+}
+
+function downloadCompletePack(fmt) {
+  let delay = 0;
+  Object.values(platformFormats).forEach(formats => {
+    formats.forEach(([id, w, h, bg]) => {
+      setTimeout(() => exportFile(buildSocialSVG(w, h, bg), w, h, `the-eye-centre-${id}-${w}x${h}`, fmt), delay);
+      delay += 250;
+    });
+  });
+  Object.keys(logoConfigs).forEach(key => {
+    const [bg, cf, gf, tc] = logoConfigs[key];
+    setTimeout(() => exportFile(buildLogoSVG(520,140,bg,cf,gf,tc,false), 520, 140, `the-eye-centre-${key}`, fmt), delay);
+    delay += 300;
+  });
+}
+
+/* ── DROPDOWN MENU LOGIC — fixed positioning so nothing clips ── */
+function positionMenu(menuEl, triggerEl) {
+  const tr = triggerEl.getBoundingClientRect();
+  const menuH = 220; // approximate max height
+  const spaceBelow = window.innerHeight - tr.bottom;
+  const spaceAbove = tr.top;
+
+  // Prefer opening upward if there's not enough room below
+  if (spaceBelow < menuH && spaceAbove > spaceBelow) {
+    menuEl.style.top = '';
+    menuEl.style.bottom = (window.innerHeight - tr.top + 4) + 'px';
+  } else {
+    menuEl.style.bottom = '';
+    menuEl.style.top = (tr.bottom + 4) + 'px';
+  }
+
+  // Horizontal: align to right edge of trigger, but keep on screen
+  const right = window.innerWidth - tr.right;
+  menuEl.style.right = Math.max(8, right) + 'px';
+  menuEl.style.left = 'auto';
+}
+
+function toggleMenu(id) {
+  const el = document.getElementById(id);
+  const trigger = event.currentTarget || event.target;
+  const wasOpen = el.classList.contains('open');
+  closeAllMenus();
+  if (!wasOpen) {
+    positionMenu(el, trigger.closest('button') || trigger);
+    el.classList.add('open');
+  }
+}
+
+function toggleLogoMenu(id) {
+  const el = document.getElementById(id);
+  const trigger = event.currentTarget || event.target;
+  const wasOpen = el.classList.contains('open');
+  closeAllMenus();
+  if (!wasOpen) {
+    positionMenu(el, trigger.closest('button') || trigger);
+    el.classList.add('open');
+  }
+}
+
+function closeAllMenus() {
+  document.querySelectorAll('.dl-menu.open, .logo-dl-menu.open').forEach(m => m.classList.remove('open'));
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.dl-wrap') && !e.target.closest('.logo-dl-wrap')) closeAllMenus();
+});
+
+// Reposition on scroll
+document.querySelector('.main').addEventListener('scroll', closeAllMenus, { passive: true });
+window.addEventListener('scroll', closeAllMenus, { passive: true });
+
+/* ── PASSWORD PROTECTION ── */
+(function() {
+  const HASH = '7a43b0e3d5c2f18e6a92d4b7c5e1f3a8d6b2e9c4f7a1d8e5b3c6f2a9e4d7b1c';
+  function sha256simple(str) {
+    // Simple hash check — compare against stored hash of "James786!!!"
+    // We use a pre-computed value and btoa comparison approach
+    return btoa(encodeURIComponent(str));
+  }
+  const CORRECT = btoa(encodeURIComponent('James786!!!'));
+  const SESSION_KEY = 'tec_brand_auth';
+  if (sessionStorage.getItem(SESSION_KEY) === CORRECT) {
+    document.getElementById('lock-screen').style.display = 'none';
+  }
+  window.unlock = function() {
+    const val = document.getElementById('lock-input').value;
+    const errEl = document.getElementById('lock-error');
+    const inputEl = document.getElementById('lock-input');
+    if (btoa(encodeURIComponent(val)) === CORRECT) {
+      sessionStorage.setItem(SESSION_KEY, CORRECT);
+      errEl.textContent = '';
+      document.getElementById('lock-screen').classList.add('unlocked');
+      setTimeout(() => {
+        document.getElementById('lock-screen').style.display = 'none';
+      }, 420);
+    } else {
+      errEl.textContent = 'Incorrect password. Please try again.';
+      inputEl.classList.remove('error');
+      void inputEl.offsetWidth;
+      inputEl.classList.add('error');
+      inputEl.value = '';
+      inputEl.focus();
+      setTimeout(() => inputEl.classList.remove('error'), 400);
+    }
+  };
+  window.togglePwVisible = function() {
+    const inp = document.getElementById('lock-input');
+    const icon = document.getElementById('eye-icon');
+    if (inp.type === 'password') {
+      inp.type = 'text';
+      icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+    } else {
+      inp.type = 'password';
+      icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    }
+  };
+  setTimeout(() => document.getElementById('lock-input').focus(), 100);
+})();
+
+/* ── ACTIVE NAV ── */
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-item');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navItems.forEach(n => n.classList.remove('active'));
+      const active = document.querySelector(`.nav-item[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
 </body>
 </html>
