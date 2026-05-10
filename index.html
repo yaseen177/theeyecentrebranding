@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Guidelines | The Eye Centre</title>
+    
+    <!-- Google Fonts: Quicksand for the logo and headings, Inter for body copy -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Quicksand', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            teal: '#1c9985',
+                            mint: '#e0f4f1',
+                            dark: '#115e52',
+                            slate: '#f1f5f9',
+                            black: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Custom styles to handle logo variable overrides */
+        .logo-monochrome {
+            --logo-bg: #1e293b;
+            --logo-text: #1e293b;
+            --logo-fg: #ffffff;
+        }
+        .logo-inverted {
+            --logo-bg: #ffffff;
+            --logo-text: #ffffff;
+            --logo-fg: #1c9985;
+        }
+        .logo-mint {
+            --logo-bg: #e0f4f1;
+            --logo-text: #1c9985;
+            --logo-fg: #1c9985;
+        }
+        .do-not-stretch { transform: scaleX(1.3); }
+        .do-not-rotate { transform: rotate(-12deg); }
+        .do-not-recolour {
+            --logo-bg: #8b5cf6;
+            --logo-text: #e11d48;
+            --logo-fg: #fef08a;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-brand-black">
+
+    <!-- Simple Client-Side Password Protection -->
+    <script>
+        const expectedPassword = "James786!!!";
+        const userPassword = prompt("Please enter the password to view the brand guidelines:");
+        
+        if (userPassword !== expectedPassword) {
+            // Replace the entire body content with an Access Denied message
+            document.body.innerHTML = `
+                <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #f8fafc; font-family: 'Inter', sans-serif;">
+                    <div style="text-align: center; padding: 2.5rem; background: white; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border: 1px solid #f1f5f9; max-width: 400px; width: 90%;">
+                        <h1 style="font-size: 1.5rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; font-family: 'Quicksand', sans-serif;">Access Denied</h1>
+                        <p style="color: #64748b; margin-bottom: 1.5rem; line-height: 1.5;">You have entered an incorrect password. Unauthorised access is not permitted.</p>
+                        <button onclick="location.reload()" style="background-color: #1c9985; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 500; cursor: pointer; transition: background-color 0.2s; width: 100%;">Try Again</button>
+                    </div>
+                </div>
+            `;
+            // Stop further rendering of the page
+            window.stop();
+        }
+    </script>
+
+    <!-- SVG Definitions (Hidden) -->
+    <svg style="display: none;">
+        <!-- Logo Mark (Circle & Glasses) -->
+        <symbol id="logo-mark" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="40" fill="var(--logo-bg, #1c9985)"/>
+            <g stroke="var(--logo-fg, #ffffff)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Left Frame -->
+                <path d="M 16 36 C 22 34, 27 34, 36 37 L 36 45 C 34 52, 24 53, 18 48 C 15 46, 15 42, 16 36 Z" />
+                <!-- Right Frame -->
+                <path d="M 64 36 C 58 34, 53 34, 44 37 L 44 45 C 46 52, 56 53, 62 48 C 65 46, 65 42, 64 36 Z" />
+                <!-- Bridge -->
+                <path d="M 36 40 Q 40 38 44 40" />
+                <!-- Arms -->
+                <path d="M 16 38 L 10 38 M 64 38 L 70 38" />
+            </g>
+        </symbol>
+
+        <!-- Logotype (Horizontal) -->
+        <symbol id="logotype" viewBox="0 0 280 80">
+            <text x="0" y="55" font-family="'Quicksand', sans-serif" font-weight="600" font-size="46px" letter-spacing="-0.5px" fill="var(--logo-text, #1c9985)">the eye centre</text>
+        </symbol>
+
+        <!-- Logotype (Stacked) -->
+        <symbol id="logotype-stacked" viewBox="0 0 160 80">
+            <text x="50%" y="30" text-anchor="middle" font-family="'Quicksand', sans-serif" font-weight="600" font-size="28px" letter-spacing="-0.5px" fill="var(--logo-text, #1c9985)">the eye</text>
+            <text x="50%" y="60" text-anchor="middle" font-family="'Quicksand', sans-serif" font-weight="600" font-size="28px" letter-spacing="-0.5px" fill="var(--logo-text, #1c9985)">centre</text>
+        </symbol>
+    </svg>
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <svg viewBox="0 0 80 80" class="h-8 w-8">
+                    <use href="#logo-mark" x="0" y="0" width="80" height="80" />
+                </svg>
+                <span class="font-display font-bold text-brand-dark text-lg">Brand Guidelines</span>
+            </div>
+            <div class="text-sm font-medium text-gray-500">v1.0 &bull; 2026</div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-20">
+
+        <!-- Header -->
+        <header class="max-w-3xl">
+            <h1 class="text-4xl md:text-5xl font-display font-bold text-brand-black mb-4">Our Visual Identity</h1>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                Welcome to the official brand guidelines for <strong>the eye centre</strong>. This manual outlines the core elements of our visual identity, ensuring consistency, clarity, and recognition across all our communications. By adhering to these rules, we maintain a cohesive and professional brand presence.
+            </p>
+        </header>
+
+        <!-- Section: Logo Configurations -->
+        <section>
+            <h2 class="text-2xl font-display font-bold text-brand-black border-b border-gray-200 pb-3 mb-8">1. Logo Configurations</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Primary Logo -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center min-h-[300px]">
+                    <svg viewBox="0 0 370 80" class="h-16 w-auto mb-8">
+                        <use href="#logo-mark" x="0" y="0" width="80" height="80" />
+                        <use href="#logotype" x="95" y="0" width="280" height="80" />
+                    </svg>
+                    <div class="text-center">
+                        <h3 class="font-semibold text-gray-800 mb-1">Primary Horizontal Logo</h3>
+                        <p class="text-sm text-gray-500">Our primary lockup. Use this version in most standard applications, such as website headers and letterheads.</p>
+                    </div>
+                </div>
+
+                <!-- Secondary / Stacked Logo -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center min-h-[300px]">
+                    <svg viewBox="0 0 160 180" class="h-32 w-auto mb-8">
+                        <use href="#logo-mark" x="40" y="0" width="80" height="80" />
+                        <use href="#logotype-stacked" x="0" y="95" width="160" height="80" />
+                    </svg>
+                    <div class="text-center">
+                        <h3 class="font-semibold text-gray-800 mb-1">Stacked Logo</h3>
+                        <p class="text-sm text-gray-500">For vertical layouts, profile pictures, and situations where horizontal space is restricted.</p>
+                    </div>
+                </div>
+
+                <!-- Logo Mark -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center">
+                    <svg viewBox="0 0 80 80" class="h-20 w-20 mb-8">
+                        <use href="#logo-mark" x="0" y="0" width="80" height="80" />
+                    </svg>
+                    <div class="text-center">
+                        <h3 class="font-semibold text-gray-800 mb-1">The Logomark</h3>
+                        <p class="text-sm text-gray-500">Use independently only when the brand is already established in the context, or as a favicon.</p>
+                    </div>
+                </div>
+
+                <!-- Monochrome & Inverted -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center">
+                        <svg viewBox="0 0 370 80" class="h-8 w-auto mb-4 logo-monochrome">
+                            <use href="#logo-mark" x="0" y="0" width="80" height="80" />
+                            <use href="#logotype" x="95" y="0" width="280" height="80" />
+                        </svg>
+                        <h3 class="font-semibold text-gray-800 text-sm text-center">Monochrome</h3>
+                    </div>
+                    <div class="bg-brand-dark p-6 rounded-2xl border border-transparent shadow-sm flex flex-col items-center justify-center">
+                        <svg viewBox="0 0 370 80" class="h-8 w-auto mb-4 logo-inverted">
+                            <use href="#logo-mark" x="0" y="0" width="80" height="80" />
+                            <use href="#logotype" x="95" y="0" width="280" height="80" />
+                        </svg>
+                        <h3 class="font-semibold text-white text-sm text-center">Inverted</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Colour Palette -->
+        <section>
+            <h2 class="text-2xl font-display font-bold text-brand-black border-b border-gray-200 pb-3 mb-8">2. Colour Palette</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Vision Teal -->
+                <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                    <div class="h-32 bg-brand-teal"></div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 mb-2">Vision Teal</h3>
+                        <p class="text-xs text-gray-500 mb-3">Primary brand colour. Used for the logomark and primary typography.</p>
+                        <div class="space-y-1 text-sm font-mono text-gray-600">
+                            <p><span class="font-semibold">HEX</span> #1c9985</p>
+                            <p><span class="font-semibold">RGB</span> 28, 153, 133</p>
+                            <p><span class="font-semibold">CMYK</span> 82, 0, 48, 40</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Clear Mint -->
+                <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                    <div class="h-32 bg-brand-mint border-b border-gray-100"></div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 mb-2">Clear Mint</h3>
+                        <p class="text-xs text-gray-500 mb-3">Secondary tint. Provides a soft, clinical, yet friendly background tone.</p>
+                        <div class="space-y-1 text-sm font-mono text-gray-600">
+                            <p><span class="font-semibold">HEX</span> #e0f4f1</p>
+                            <p><span class="font-semibold">RGB</span> 224, 244, 241</p>
+                            <p><span class="font-semibold">CMYK</span> 8, 0, 1, 4</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deep Focus -->
+                <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                    <div class="h-32 bg-brand-dark"></div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 mb-2">Deep Focus</h3>
+                        <p class="text-xs text-gray-500 mb-3">Dark contrast colour. Excellent for high-contrast backgrounds and text.</p>
+                        <div class="space-y-1 text-sm font-mono text-gray-600">
+                            <p><span class="font-semibold">HEX</span> #115e52</p>
+                            <p><span class="font-semibold">RGB</span> 17, 94, 82</p>
+                            <p><span class="font-semibold">CMYK</span> 85, 30, 60, 60</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Optic White -->
+                <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-white">
+                    <div class="h-32 bg-white border-b border-gray-100"></div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 mb-2">Optic White</h3>
+                        <p class="text-xs text-gray-500 mb-3">Used for negative space, the glasses icon, and background elements.</p>
+                        <div class="space-y-1 text-sm font-mono text-gray-600">
+                            <p><span class="font-semibold">HEX</span> #ffffff</p>
+                            <p><span class="font-semibold">RGB</span> 255, 255, 255</p>
+                            <p><span class="font-semibold">CMYK</span> 0, 0, 0, 0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Typography -->
+        <section>
+            <h2 class="text-2xl font-display font-bold text-brand-black border-b border-gray-200 pb-3 mb-8">3. Typography</h2>
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Primary Brand Typeface</h3>
+                    <div class="font-display text-6xl text-brand-teal font-semibold mb-4">Quicksand</div>
+                    <p class="text-gray-600 mb-6">Quicksand is a geometric sans-serif with rounded terminals. It mirrors the circular and friendly nature of our logomark. We use it for our logotype, all primary headings, and promotional call-outs.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <span class="block text-xs text-gray-400 mb-1">Semi-Bold (Used in Logo)</span>
+                            <div class="font-display font-semibold text-2xl text-gray-800">Aa Bb Cc Dd Ee Ff Gg Hh</div>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-gray-400 mb-1">Regular</span>
+                            <div class="font-display font-medium text-2xl text-gray-800">Aa Bb Cc Dd Ee Ff Gg Hh</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:border-l md:border-gray-100 md:pl-12">
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Supporting Typeface</h3>
+                    <div class="font-sans text-6xl text-brand-dark font-medium mb-4">Inter</div>
+                    <p class="text-gray-600 mb-6">Inter is highly legible and designed for screen readability. We use it for body copy, long-form text, and small functional elements across our digital platforms.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <span class="block text-xs text-gray-400 mb-1">Medium</span>
+                            <div class="font-sans font-medium text-2xl text-gray-800">1 2 3 4 5 6 7 8 9 0</div>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-gray-400 mb-1">Regular</span>
+                            <div class="font-sans font-normal text-2xl text-gray-800">The quick brown fox jumps over the lazy dog.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Usage Rules -->
+        <section>
+            <h2 class="text-2xl font-display font-bold text-brand-black border-b border-gray-200 pb-3 mb-8">4. Usage & Clear Space</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Clear Space -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <h3 class="font-semibold text-gray-800 mb-4">Clear Space Minimum</h3>
+                    <p class="text-sm text-gray-600 mb-8">To ensure the logo remains clear and legible, always maintain a minimum clear space around it. This space is defined by "x", which is equal to half the height of the circular logomark.</p>
+                    
+                    <div class="flex justify-center items-center h-48 bg-gray-50 rounded-lg">
+                        <div class="relative inline-block border border-dashed border-teal-400 bg-teal-50/50" style="padding: 2.5rem;">
+                            <!-- Indicator Lines -->
+                            <div class="absolute top-0 left-0 w-full h-[2.5rem] border-b border-teal-200 flex items-center justify-center">
+                                <span class="text-xs font-mono text-teal-600">x</span>
+                            </div>
+                            <div class="absolute top-0 left-0 w-[2.5rem] h-full border-r border-teal-200 flex items-center justify-center">
+                                <span class="text-xs font-mono text-teal-600">x</span>
+                            </div>
+
+                            <svg viewBox="0 0 370 80" class="h-12 w-auto relative z-10">
+                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
+                                <use href="#logotype" x="95" y="0" width="280" height="80" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Minimum Size -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <h3 class="font-semibold text-gray-800 mb-4">Minimum Size</h3>
+                    <p class="text-sm text-gray-600 mb-8">To maintain legibility, never reproduce the logo smaller than the dimensions specified below across print and digital mediums.</p>
+                    
+                    <div class="flex flex-col justify-center items-center h-48 space-y-8 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-6">
+                            <svg viewBox="0 0 370 80" class="h-5 w-auto">
+                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
+                                <use href="#logotype" x="95" y="0" width="280" height="80" />
+                            </svg>
+                            <span class="text-sm font-mono text-gray-500 border-l border-gray-300 pl-4">Digital: 120px wide<br>Print: 30mm wide</span>
+                        </div>
+                        <div class="flex items-center space-x-6">
+                            <svg viewBox="0 0 80 80" class="h-6 w-6">
+                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
+                            </svg>
+                            <span class="text-sm font-mono text-gray-500 border-l border-gray-300 pl-4">Digital: 24px wide<br>Print: 8mm wide</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dos and Don'ts -->
+            <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                <h3 class="font-semibold text-gray-800 mb-6">Incorrect Usage</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    
+                    <div class="text-center">
+                        <div class="bg-red-50 h-40 rounded-xl flex items-center justify-center mb-4 overflow-hidden border border-red-100">
+                            <svg viewBox="0 0 370 80" class="h-10 w-auto do-not-stretch transition-transform">
+                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
+                                <use href="#logotype" x="95" y="0" width="280" height="80" />
+                            </svg>
+                        </div>
+                        <p class="text-sm font-bold text-red-600 mb-1">Don't</p>
+                        <p class="text-xs text-gray-600">Do not stretch, squash or distort the logo proportions.</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="bg-red-50 h-40 rounded-xl flex items-center justify-center mb-4 overflow-hidden border border-red-100">
+                            <svg viewBox="0 0 370 80" class="h-10 w-auto do-not-rotate transition-transform">
+                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
+                                <use href="#logotype" x="95" y="0" width="280" height="80" />
+                            </svg>
+                        </div>
+                        <p class="text-sm font-bold text-red-600 mb-1">Don't</p>
+                        <p class="text-xs text-gray-600">Do not rotate the logo to any arbitrary angle.</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="bg-red-50 h-40 rounded-xl flex items-center justify-center mb-4 overflow-hidden border border-red-100">
+                            <svg viewBox="0 0 370 80" class="h-10 w-auto do-not-recolour transition-colors">
+                                <use href="#logo-mark" x="0" y="0" width="80" height="80" />
+                                <use href="#logotype" x="95" y="0" width="280" height="80" />
+                            </svg>
+                        </div>
+                        <p class="text-sm font-bold text-red-600 mb-1">Don't</p>
+                        <p class="text-xs text-gray-600">Do not use unapproved colour combinations.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-gray-200 bg-white mt-12 py-8">
+        <div class="max-w-6xl mx-auto px-6 text-center text-sm text-gray-400">
+            &copy; 2026 The Eye Centre. Internal Brand Guidelines.
+        </div>
+    </footer>
+
+</body>
+</html>
