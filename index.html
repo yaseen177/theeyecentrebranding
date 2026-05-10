@@ -715,6 +715,7 @@
   <div class="nav-section">
     <div class="nav-label">Downloads</div>
     <a class="nav-item" href="#downloads">All Assets</a>
+    <a class="nav-item" href="#embed">HTML Embeds</a>
   </div>
 </nav>
 
@@ -1614,7 +1615,242 @@
     <div class="note" style="margin-top:1rem;">All assets use Bootstrap Icons eyeglasses (MIT License). Logo icon © The Eye Centre 2025. Fonts: DM Serif Display & DM Sans via Google Fonts (Open Font License).</div>
   </section>
 
+  <!-- ══════════════════════════════════════════
+       HTML EMBED SNIPPETS
+  ══════════════════════════════════════════ -->
+  <section class="section" id="embed">
+    <h2 class="section-title">HTML Embed Snippets</h2>
+    <p class="section-sub">Ready-to-paste HTML code for embedding the logo directly into any webpage. Click a variant to generate the snippet, then copy it.</p>
+
+    <!-- Variant selector -->
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;" id="embed-selector">
+      <button class="embed-tab active" onclick="selectEmbed('lockup-light')">Logo · Light</button>
+      <button class="embed-tab" onclick="selectEmbed('lockup-dark')">Logo · Dark</button>
+      <button class="embed-tab" onclick="selectEmbed('lockup-teal')">Logo · Teal bg</button>
+      <button class="embed-tab" onclick="selectEmbed('lockup-tint')">Logo · Tint</button>
+      <button class="embed-tab" onclick="selectEmbed('icon-sm')">Icon · Small (32px)</button>
+      <button class="embed-tab" onclick="selectEmbed('icon-md')">Icon · Medium (64px)</button>
+      <button class="embed-tab" onclick="selectEmbed('icon-lg')">Icon · Large (120px)</button>
+      <button class="embed-tab" onclick="selectEmbed('icon-dark')">Icon · Dark bg</button>
+      <button class="embed-tab" onclick="selectEmbed('wordmark-light')">Wordmark only · Light</button>
+      <button class="embed-tab" onclick="selectEmbed('wordmark-dark')">Wordmark only · Dark</button>
+    </div>
+
+    <!-- Live preview -->
+    <div style="background:var(--white);border:0.5px solid var(--color-border-tertiary, #e0e0e0);border-radius:var(--radius);padding:2rem;display:flex;align-items:center;justify-content:center;min-height:120px;margin-bottom:1rem;" id="embed-preview">
+    </div>
+
+    <!-- Size control -->
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;flex-wrap:wrap;">
+      <span style="font-size:13px;color:var(--color-text-secondary);font-weight:500;">Circle size:</span>
+      <input type="range" id="embed-size-slider" min="32" max="200" value="72" style="width:160px;accent-color:#2aaa8a;" oninput="updateEmbedSize(this.value)">
+      <span style="font-size:13px;font-weight:500;color:var(--color-text-primary);min-width:36px;" id="embed-size-label">72px</span>
+      <span style="font-size:12px;color:var(--color-text-secondary);">(icon-only variants)</span>
+    </div>
+
+    <!-- Code block -->
+    <div style="position:relative;">
+      <div style="background:#1a2420;border-radius:var(--radius);padding:1.25rem 1.5rem;overflow-x:auto;">
+        <pre id="embed-code" style="font-family:monospace;font-size:12px;color:#e1f5ee;line-height:1.7;white-space:pre;margin:0;"></pre>
+      </div>
+      <button onclick="copyEmbedCode()" id="copy-btn" style="position:absolute;top:10px;right:10px;font-family:var(--font-body, sans-serif);font-size:11px;font-weight:500;padding:5px 14px;border-radius:20px;border:0.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:white;cursor:pointer;transition:all .15s;">
+        Copy
+      </button>
+    </div>
+
+    <p class="note" style="margin-top:0.75rem;">These snippets are self-contained — no external dependencies. Paste directly into any HTML file or CMS.</p>
+  </section>
+
 </main>
+
+<style>
+  .embed-tab {
+    font-family: var(--font-body, sans-serif);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 0.5px solid var(--border-med, rgba(0,0,0,0.15));
+    background: transparent;
+    color: var(--slate, #4a5550);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .embed-tab:hover { background: var(--teal-tint, #e1f5ee); color: var(--teal-deep, #0f6e56); }
+  .embed-tab.active { background: var(--teal, #2aaa8a); color: white; border-color: var(--teal, #2aaa8a); }
+  #embed-preview { transition: background .2s; }
+</style>
+
+<script>
+/* ── HTML EMBED SNIPPETS ── */
+const GP = `M494.808,192.041l-9.598-0.161c0,0-8.412-25.989-56.914-27.898c-38.4-1.518-77.883,1.098-112.568,6.744c-27.018,4.386-38.022,22.044-43.646,21.946L256,192.412l-16.083,0.258c-5.625,0.098-16.629-17.559-43.646-21.946c-34.685-5.646-74.168-8.262-112.568-6.744c-48.501,1.91-56.914,27.898-56.914,27.898l-9.598,0.161c-9.651,0.154-17.35,8.108-17.188,17.762l0.301,18.769c0.119,7.227,4.676,13.649,11.466,16.125l6.257,2.287c0,0,10.462,33.419,26.745,61.458c23.159,39.869,65.2,42.954,109.189,38.428c61.286-6.31,74.008-64.459,79.094-81.703c9.913-33.628,22.946-29.83,22.946-29.83s13.033-3.798,22.946,29.83c5.086,17.244,17.808,75.393,79.094,81.703c43.989,4.526,86.029,1.441,109.188-38.428c16.283-28.038,26.744-61.458,26.744-61.458l6.258-2.287c6.789-2.476,11.347-8.898,11.466-16.125l0.301-18.769C512.158,200.149,504.459,192.195,494.808,192.041z M200.335,263.404c-2.938,7.884-6.446,15.559-10.284,23.121c-8.09,15.936-19.955,27.528-39.368,29.438c-8.038,0.791-15.051,1.224-21.438,1.33c-37.189,0.602-49.19-10.536-56.624-22.659c-11.557-18.875-16.863-35.476-18.867-48.851c-5.684-37.938,30.557-44.284,59.173-42.961c23.918,1.106,51.744,0.79,75.036,6.458c10.916,2.658,17.699,10.458,18.755,18.748C208.254,240.059,205.718,248.985,200.335,263.404z M458.246,245.782c-2.004,13.375-7.311,29.976-18.867,48.851c-7.433,12.124-19.434,23.261-56.624,22.659c-6.387-0.106-13.401-0.539-21.438-1.33c-19.413-1.91-31.278-13.502-39.368-29.438c-3.838-7.562-7.346-15.237-10.284-23.121c-5.383-14.418-7.919-23.345-6.384-35.378c1.057-8.29,7.839-16.09,18.756-18.748c23.292-5.667,51.117-5.352,75.036-6.458C427.688,201.499,463.93,207.844,458.246,245.782z`;
+
+function glassesSVG(w, h, fill) {
+  const gw = Math.round(w * 2.4 * 0.8);
+  const gh = Math.round(gw * 0.44);
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="${w/2}" cy="${h/2}" r="${w/2}" fill="${fill === 'white_circle' ? '#2aaa8a' : fill === 'transparent_circle' ? 'rgba(255,255,255,0.18)' : fill}"/>
+  <svg x="${(w-gw)/2}" y="${(h-gh)/2}" width="${gw}" height="${gh}" viewBox="0 0 512 512">
+    <path fill="white" d="${GP}"/>
+  </svg>
+</svg>`;
+}
+
+function lockupHTML(bg, circleFill, textColor, circleStyle) {
+  const cr = 72;
+  const gw = Math.round(cr * 2.4 * 0.8);
+  const gh = Math.round(gw * 0.44);
+  const bdrStyle = circleStyle === 'ghost' ? `border:1.5px solid rgba(255,255,255,0.35);` : '';
+  return `<!-- The Eye Centre Logo — ${bg === 'white' ? 'Light' : bg === '#1a2420' ? 'Dark' : bg === '#2aaa8a' ? 'Teal' : 'Tint'} variant -->
+<div style="
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  padding:20px 28px;
+  background:${bg};
+  border-radius:12px;
+  font-family:'Georgia',serif;
+">
+  <!-- Icon circle -->
+  <div style="
+    width:${cr}px;
+    height:${cr}px;
+    background:${circleFill};
+    border-radius:50%;
+    ${bdrStyle}
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  ">
+    <svg width="${gw}" height="${gh}" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <path fill="white" d="${GP}"/>
+    </svg>
+  </div>
+  <!-- Wordmark -->
+  <span style="
+    font-family:'Georgia','Times New Roman',serif;
+    font-size:1.5rem;
+    color:${textColor};
+    letter-spacing:-0.01em;
+    white-space:nowrap;
+  ">the eye centre</span>
+</div>`;
+}
+
+function iconOnlyHTML(size, circleBg, circleStyle) {
+  const gw = Math.round(size * 2.4 * 0.8);
+  const gh = Math.round(gw * 0.44);
+  const bdrStyle = circleStyle === 'ghost' ? `border:1.5px solid rgba(255,255,255,0.35);` : '';
+  return `<!-- The Eye Centre Icon — ${size}px -->
+<div style="
+  width:${size}px;
+  height:${size}px;
+  background:${circleBg};
+  border-radius:50%;
+  ${bdrStyle}
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+">
+  <svg width="${gw}" height="${gh}" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <path fill="white" d="${GP}"/>
+  </svg>
+</div>`;
+}
+
+function wordmarkHTML(textColor, bg) {
+  return `<!-- The Eye Centre Wordmark Only -->
+<span style="
+  font-family:'Georgia','Times New Roman',serif;
+  font-size:1.5rem;
+  font-weight:400;
+  color:${textColor};
+  letter-spacing:-0.01em;
+  background:${bg};
+  padding:12px 20px;
+  border-radius:8px;
+  display:inline-block;
+">the eye centre</span>`;
+}
+
+const embedVariants = {
+  'lockup-light':    () => lockupHTML('#ffffff', '#2aaa8a', '#1a2420', 'solid'),
+  'lockup-dark':     () => lockupHTML('#1a2420', '#2aaa8a', '#ffffff', 'solid'),
+  'lockup-teal':     () => lockupHTML('#2aaa8a', 'rgba(255,255,255,0.18)', '#ffffff', 'ghost'),
+  'lockup-tint':     () => lockupHTML('#e1f5ee', '#2aaa8a', '#0f6e56', 'solid'),
+  'icon-sm':         () => iconOnlyHTML(parseInt(document.getElementById('embed-size-slider').value) || 32, '#2aaa8a', 'solid'),
+  'icon-md':         () => iconOnlyHTML(parseInt(document.getElementById('embed-size-slider').value) || 64, '#2aaa8a', 'solid'),
+  'icon-lg':         () => iconOnlyHTML(parseInt(document.getElementById('embed-size-slider').value) || 120, '#2aaa8a', 'solid'),
+  'icon-dark':       () => iconOnlyHTML(parseInt(document.getElementById('embed-size-slider').value) || 64, '#2aaa8a', 'solid'),
+  'wordmark-light':  () => wordmarkHTML('#1a2420', '#ffffff'),
+  'wordmark-dark':   () => wordmarkHTML('#ffffff', '#1a2420'),
+};
+
+const previewVariants = {
+  'lockup-light':    () => { updatePreview('#ffffff', lockupHTML('#ffffff','#2aaa8a','#1a2420','solid')); },
+  'lockup-dark':     () => { updatePreview('#1a2420', lockupHTML('#1a2420','#2aaa8a','#ffffff','solid')); },
+  'lockup-teal':     () => { updatePreview('#2aaa8a', lockupHTML('#2aaa8a','rgba(255,255,255,0.18)','#ffffff','ghost')); },
+  'lockup-tint':     () => { updatePreview('#e1f5ee', lockupHTML('#e1f5ee','#2aaa8a','#0f6e56','solid')); },
+  'icon-sm':         () => { const s = parseInt(document.getElementById('embed-size-slider').value)||32; updatePreview('#f7f9f8', iconOnlyHTML(s,'#2aaa8a','solid')); },
+  'icon-md':         () => { const s = parseInt(document.getElementById('embed-size-slider').value)||64; updatePreview('#f7f9f8', iconOnlyHTML(s,'#2aaa8a','solid')); },
+  'icon-lg':         () => { const s = parseInt(document.getElementById('embed-size-slider').value)||120; updatePreview('#f7f9f8', iconOnlyHTML(s,'#2aaa8a','solid')); },
+  'icon-dark':       () => { const s = parseInt(document.getElementById('embed-size-slider').value)||64; updatePreview('#1a2420', iconOnlyHTML(s,'#2aaa8a','solid')); },
+  'wordmark-light':  () => { updatePreview('#ffffff', wordmarkHTML('#1a2420','#ffffff')); },
+  'wordmark-dark':   () => { updatePreview('#1a2420', wordmarkHTML('#ffffff','#1a2420')); },
+};
+
+let currentEmbed = 'lockup-light';
+
+function updatePreview(bg, html) {
+  const prev = document.getElementById('embed-preview');
+  prev.style.background = bg;
+  prev.innerHTML = html;
+}
+
+function selectEmbed(key) {
+  currentEmbed = key;
+  document.querySelectorAll('.embed-tab').forEach(t => t.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  previewVariants[key]();
+  document.getElementById('embed-code').textContent = embedVariants[key]();
+}
+
+function updateEmbedSize(val) {
+  document.getElementById('embed-size-label').textContent = val + 'px';
+  if (['icon-sm','icon-md','icon-lg','icon-dark'].includes(currentEmbed)) {
+    previewVariants[currentEmbed]();
+    document.getElementById('embed-code').textContent = embedVariants[currentEmbed]();
+  }
+}
+
+function copyEmbedCode() {
+  const code = document.getElementById('embed-code').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✓ Copied!';
+    btn.style.background = 'rgba(42,170,138,0.4)';
+    setTimeout(() => { btn.textContent = 'Copy'; btn.style.background = 'rgba(255,255,255,0.1)'; }, 2000);
+  });
+}
+
+// Init on load
+document.addEventListener('DOMContentLoaded', () => {
+  selectEmbed('lockup-light');
+  // Add embed nav item
+  const nav = document.querySelector('.sidebar');
+  if (nav) {
+    const dlSection = nav.querySelector('.nav-section:last-child');
+    if (dlSection) {
+      const a = document.createElement('a');
+      a.className = 'nav-item';
+      a.href = '#embed';
+      a.textContent = 'HTML Embeds';
+      dlSection.appendChild(a);
+    }
+  }
+});
+</script>
 
 <script>
 /* Glasses icon — exact SVGRepo path, white fill */
