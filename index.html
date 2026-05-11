@@ -1624,16 +1624,16 @@
 
     <!-- Variant selector -->
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;" id="embed-selector">
-      <button class="embed-tab active" onclick="selectEmbed('lockup-light')">Logo · Light</button>
-      <button class="embed-tab" onclick="selectEmbed('lockup-dark')">Logo · Dark</button>
-      <button class="embed-tab" onclick="selectEmbed('lockup-teal')">Logo · Teal bg</button>
-      <button class="embed-tab" onclick="selectEmbed('lockup-tint')">Logo · Tint</button>
-      <button class="embed-tab" onclick="selectEmbed('icon-sm')">Icon · Small (32px)</button>
-      <button class="embed-tab" onclick="selectEmbed('icon-md')">Icon · Medium (64px)</button>
-      <button class="embed-tab" onclick="selectEmbed('icon-lg')">Icon · Large (120px)</button>
-      <button class="embed-tab" onclick="selectEmbed('icon-dark')">Icon · Dark bg</button>
-      <button class="embed-tab" onclick="selectEmbed('wordmark-light')">Wordmark only · Light</button>
-      <button class="embed-tab" onclick="selectEmbed('wordmark-dark')">Wordmark only · Dark</button>
+      <button class="embed-tab active" onclick="selectEmbed('lockup-light', this)">Logo · Light</button>
+      <button class="embed-tab" onclick="selectEmbed('lockup-dark', this)">Logo · Dark</button>
+      <button class="embed-tab" onclick="selectEmbed('lockup-teal', this)">Logo · Teal bg</button>
+      <button class="embed-tab" onclick="selectEmbed('lockup-tint', this)">Logo · Tint</button>
+      <button class="embed-tab" onclick="selectEmbed('icon-sm', this)">Icon · Small (32px)</button>
+      <button class="embed-tab" onclick="selectEmbed('icon-md', this)">Icon · Medium (64px)</button>
+      <button class="embed-tab" onclick="selectEmbed('icon-lg', this)">Icon · Large (120px)</button>
+      <button class="embed-tab" onclick="selectEmbed('icon-dark', this)">Icon · Dark bg</button>
+      <button class="embed-tab" onclick="selectEmbed('wordmark-light', this)">Wordmark only · Light</button>
+      <button class="embed-tab" onclick="selectEmbed('wordmark-dark', this)">Wordmark only · Dark</button>
     </div>
 
     <!-- Live preview -->
@@ -1808,10 +1808,11 @@ function updatePreview(bg, html) {
   prev.innerHTML = html;
 }
 
-function selectEmbed(key) {
+function selectEmbed(key, triggerEl) {
   currentEmbed = key;
   document.querySelectorAll('.embed-tab').forEach(t => t.classList.remove('active'));
-  event.currentTarget.classList.add('active');
+  const active = triggerEl || document.querySelector(`.embed-tab[onclick*="'${key}'"]`);
+  if (active) active.classList.add('active');
   previewVariants[key]();
   document.getElementById('embed-code').textContent = embedVariants[key]();
 }
@@ -1836,7 +1837,8 @@ function copyEmbedCode() {
 
 // Init on load
 document.addEventListener('DOMContentLoaded', () => {
-  selectEmbed('lockup-light');
+  const firstTab = document.querySelector('.embed-tab');
+  if (firstTab) selectEmbed('lockup-light', firstTab);
   // Add embed nav item
   const nav = document.querySelector('.sidebar');
   if (nav) {
@@ -1863,25 +1865,45 @@ function makeGlassesSVG(w, h, fillColor) {
 
 /* ── SVG BUILDERS ── */
 function buildLogoSVG(w, h, bg, circleFill, glassesFill, textColor, iconOnly) {
-  const cr = iconOnly ? Math.min(w,h)*0.44 : Math.min(h*0.42, h*0.42);
-  const cx = iconOnly ? w/2 : cr + h*0.1;
-  const cy = h/2;
+  const cr = iconOnly ? Math.min(w,h)*0.44 : h * 0.38;
+  const cy = h / 2;
   const gSize = cr * 2.4;
+
+  if (iconOnly) {
+    const cx = w / 2;
+    let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`;
+    svg += `<rect width="${w}" height="${h}" fill="${bg}"/>`;
+    svg += `<circle cx="${cx}" cy="${cy}" r="${cr}" fill="${circleFill}"/>`;
+    svg += `<svg x="${cx - gSize/2}" y="${cy - gSize*0.35}" width="${gSize}" height="${gSize*0.7}" viewBox="0 0 512 512"><path fill="${glassesFill}" d="${GLASSES_PATH_D}"/></svg>`;
+    svg += `</svg>`;
+    return svg;
+  }
+
+  // For horizontal lockup: estimate total width, then centre it
+  const fs = h * 0.22;
+  // Approximate text width: ~0.52 * fontSize per character for serif fonts
+  const text = 'the eye centre';
+  const approxTextW = text.length * fs * 0.52;
+  const gap = cr * 0.4;
+  const totalW = cr * 2 + gap + approxTextW;
+
+  // Start x so the whole lockup is centred
+  const startX = (w - totalW) / 2;
+  const cx = startX + cr;
+
   let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`;
   svg += `<rect width="${w}" height="${h}" fill="${bg}"/>`;
   svg += `<circle cx="${cx}" cy="${cy}" r="${cr}" fill="${circleFill}"/>`;
   svg += `<svg x="${cx - gSize/2}" y="${cy - gSize*0.35}" width="${gSize}" height="${gSize*0.7}" viewBox="0 0 512 512"><path fill="${glassesFill}" d="${GLASSES_PATH_D}"/></svg>`;
-  if (!iconOnly) {
-    const tx = cx + cr + 16;
-    const fs = h * 0.22;
-    svg += `<text x="${tx}" y="${cy + fs*0.38}" font-family="Georgia,'Times New Roman',serif" font-size="${fs}" fill="${textColor}">the eye centre</text>`;
-  }
+  const tx = cx + cr + gap;
+  svg += `<text x="${tx}" y="${cy + fs*0.38}" font-family="Georgia,'Times New Roman',serif" font-size="${fs}" fill="${textColor}">${text}</text>`;
   svg += `</svg>`;
   return svg;
 }
 
 function buildSocialSVG(w, h, bg) {
   const isPortrait = h > w;
+  const isSquare = w === h;
   const scale = Math.min(w, h) * 0.55;
   const cr = scale / 2;
   const cx = w / 2;
@@ -1892,14 +1914,11 @@ function buildSocialSVG(w, h, bg) {
   svg += `<rect width="${w}" height="${h}" fill="${bg}"/>`;
   svg += `<circle cx="${cx}" cy="${cy}" r="${cr}" fill="#2aaa8a"/>`;
   svg += `<svg x="${cx - gSize/2}" y="${cy - gSize*0.35}" width="${gSize}" height="${gSize*0.7}" viewBox="0 0 512 512"><path fill="white" d="${GLASSES_PATH_D}"/></svg>`;
-  if (isPortrait) {
-    const ty = h * 0.72;
-    const fs = w * 0.07;
-    svg += `<text x="${w/2}" y="${ty}" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="${fs}" fill="${textColor}">the eye centre</text>`;
-  } else if (w !== h) {
-    const ty = cy + cr * 0.7 + 20;
-    const fs = Math.min(w,h) * 0.06;
-    svg += `<text x="${w/2}" y="${ty}" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="${fs}" fill="${textColor}">the eye centre</text>`;
+  // Always add centred wordmark below the circle
+  const fs = Math.min(w, h) * 0.06;
+  const ty = isPortrait ? h * 0.72 : cy + cr + fs * 1.4;
+  if (!isSquare || isPortrait) {
+    svg += `<text x="${cx}" y="${ty}" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="${fs}" fill="${textColor}">the eye centre</text>`;
   }
   svg += `</svg>`;
   return svg;
